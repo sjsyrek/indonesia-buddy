@@ -2,6 +2,6 @@
   "database": "dolt",
   "backend": "dolt",
   "dolt_mode": "server",
-  "dolt_database": "indonesia_buddy",
-  "project_id": "e35ec212-753a-4407-8113-d3307c4aabb7"
+  "dolt_database": "INDO",
+  "project_id": "a75fb754-eaca-4ff4-adb7-e8890d224a2c"
 }

@@ -25,7 +25,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Bankruptcy uses IOU system (not elimination)
 - Shipping cost timing: revenue received first, then costs deducted
 - Siap Saji creation: new owner must remove half (rounded up) of production areas
-- Spelling: corrected "Siap Faji" to "Siap Saji" throughout
+- Spelling: kept "Siap Faji" per official English rulebook (matches codebase types)
 
 ### Added
 

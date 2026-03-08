@@ -48,7 +48,7 @@ export const playerAidSections: PlayerAidSection[] = [
         ['Rice', '20', '20/good'],
         ['Spice', '25', '25/good'],
         ['Rubber', '30', '30/good'],
-        ['Siap Saji', '25 (create) / 35 (merge)', '35/good'],
+        ['Siap Faji', '25 (create) / 35 (merge)', '35/good'],
         ['Oil', '40', '40/good'],
       ],
     },
@@ -60,7 +60,7 @@ export const playerAidSections: PlayerAidSection[] = [
       'If ALL goods were shipped → company MUST expand for free (up to Expansion R&D level)',
       'If NOT all goods shipped → may PAY base price per new area to expand (optional)',
       'Expansion limit = your Expansion R&D track level',
-      'Paid expansion cost = base price per area (see Company Types table: Rice Rp 20, Spice Rp 25, Rubber Rp 30, Siap Saji Rp 25, Oil Rp 40)',
+      'Paid expansion cost = base price per area (see Company Types table: Rice Rp 20, Spice Rp 25, Rubber Rp 30, Siap Faji Rp 25, Oil Rp 40)',
     ],
   },
   {
@@ -71,7 +71,7 @@ export const playerAidSections: PlayerAidSection[] = [
       'Paid by the PRODUCTION company owner from operating revenue. Revenue is received first, then costs deducted.',
       'Shipping company owners RECEIVE Rp 5 per cargo cube on their ships — shippers earn, producers pay',
       'Shipping is MANDATORY — you must ship if a route exists, even at a loss',
-      'Break-even hops (for producer): Rice 4, Spice 5, Rubber 6, Siap Saji 7, Oil 8',
+      'Break-even hops (for producer): Rice 4, Spice 5, Rubber 6, Siap Faji 7, Oil 8',
     ],
   },
   {
@@ -96,7 +96,7 @@ export const playerAidSections: PlayerAidSection[] = [
       'Bid increments = total units (bids divisible by total units)',
       'To bid, a player must own one of the companies OR have a free company slot (Slots R&D > current company count)',
       'Winning bidder pays other owners proportionally; keeps their own share',
-      'Siap Saji creation: new owner must REMOVE half (rounded up) of production areas',
+      'Siap Faji creation: new owner must REMOVE half (rounded up) of production areas (border areas only)',
     ],
   },
   {
@@ -147,13 +147,13 @@ export const clarifiedRuleSections: ClarifiedRuleSection[] = [
     title: 'Merger Mechanics',
     summary: 'Cost formula, bid process, R&D requirements, step-by-step',
     details: [
-      'Step 1 — PROPOSE: Any player with sufficient Mergers R&D can propose merging two companies of the same type (or Rice + Spice to create Siap Saji). The proposer must be able to bid (own one of the companies OR have a free slot).',
+      'Step 1 — PROPOSE: Any player with sufficient Mergers R&D can propose merging two companies of the same type (or Rice + Spice to create Siap Faji). The proposer must be able to bid (own one of the companies OR have a free slot).',
       'Step 2 — MINIMUM BID: Calculate total units (areas) of both companies combined. Minimum bid = total units × base price for that company type.',
       'Step 3 — BIDDING: Starting with the proposer, players bid in turn order. Bids must increase by at least the total units (the bid increment). To bid, you must own one of the companies OR have a free company slot.',
       'Step 4 — WINNER: Highest bidder wins. If the proposer\'s initial bid is not challenged, they win at minimum bid.',
       'Step 5 — PAYMENT: The winner pays each other owner proportionally. Payment to owner = (their units / total units) × winning bid. The winner keeps their own proportional share.',
-      'Special case — Siap Saji: When creating Siap Saji (merging Rice + Spice), the base price is 25. The new owner must REMOVE half (rounded up) of the production areas, then replace remaining rice/spice with Siap Saji.',
-      'When merging two existing Siap Saji companies, the base price is 35. No areas are removed in this case.',
+      'Special case — Siap Faji: When creating Siap Faji (merging Rice + Spice), the base price is 25. The new owner must REMOVE half (rounded up) of the production areas, then replace remaining rice/spice with Siap Faji.',
+      'When merging two existing Siap Faji companies, the base price is 35. No areas are removed in this case.',
     ],
   },
   {

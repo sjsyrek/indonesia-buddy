@@ -24,13 +24,14 @@ export function BidLadderTable({
   const nameB = ownerBName || 'Owner B'
 
   return (
-    <section className="space-y-2" aria-label="Bid ladder">
+    <section className="space-y-4" aria-label="Bid ladder">
       <h3 className="text-sm font-semibold text-amber-900 sm:text-base">
         Bid Ladder{' '}
         <span className="font-normal text-amber-700">(minimum bid: Rp {minimumBid})</span>
       </h3>
+      <div className="scroll-fade-bottom">
       <div
-        className="max-h-96 overflow-x-auto overflow-y-auto rounded-lg border border-amber-200 shadow-sm"
+        className="max-h-96 overflow-x-auto overflow-y-auto rounded-xl border border-stone-200 bg-white shadow-sm"
         role="region"
         aria-label="Bid ladder scrollable area"
         tabIndex={0}
@@ -92,6 +93,7 @@ export function BidLadderTable({
             })}
           </tbody>
         </table>
+      </div>
       </div>
     </section>
   )

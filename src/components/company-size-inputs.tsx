@@ -22,11 +22,11 @@ export function CompanySizeInputs({
   const totalUnits = ownerAUnits + ownerBUnits
 
   return (
-    <fieldset className="space-y-3">
+    <fieldset className="space-y-4">
       <legend className="text-sm font-semibold text-amber-900">Company Sizes</legend>
 
-      <div className="grid grid-cols-1 gap-3 sm:grid-cols-2">
-        <div className="space-y-2 rounded-lg border border-amber-200 bg-amber-50/50 p-3">
+      <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 sm:gap-5">
+        <div className="space-y-2 rounded-xl border border-stone-200 bg-white p-4 shadow-sm sm:p-5">
           <div>
             <label htmlFor="owner-a-name" className="block text-xs font-medium text-amber-800 sm:text-sm">
               Owner A Name
@@ -47,6 +47,7 @@ export function CompanySizeInputs({
             <input
               id="owner-a-units"
               type="number"
+              inputMode="numeric"
               min={1}
               max={20}
               value={ownerAUnits}
@@ -56,7 +57,7 @@ export function CompanySizeInputs({
           </div>
         </div>
 
-        <div className="space-y-2 rounded-lg border border-amber-200 bg-amber-50/50 p-3">
+        <div className="space-y-2 rounded-xl border border-stone-200 bg-white p-4 shadow-sm sm:p-5">
           <div>
             <label htmlFor="owner-b-name" className="block text-xs font-medium text-amber-800 sm:text-sm">
               Owner B Name
@@ -77,6 +78,7 @@ export function CompanySizeInputs({
             <input
               id="owner-b-units"
               type="number"
+              inputMode="numeric"
               min={1}
               max={20}
               value={ownerBUnits}

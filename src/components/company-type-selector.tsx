@@ -18,7 +18,7 @@ const DISPLAY_NAMES: Record<CompanyType, string> = {
 
 export function CompanyTypeSelector({ value, onChange }: CompanyTypeSelectorProps) {
   return (
-    <div className="space-y-1.5">
+    <div className="space-y-4">
       <label htmlFor="company-type" className="block text-sm font-semibold text-amber-900">
         Company Type
       </label>
@@ -37,6 +37,9 @@ export function CompanyTypeSelector({ value, onChange }: CompanyTypeSelectorProp
       <p className="text-xs text-amber-700 sm:text-sm">
         Base price per unit: <strong>Rp {BASE_PRICES[value]}</strong>
       </p>
+      {(value === 'SiapFajiCreation' || value === 'SiapFajiMerger') && (
+        <p className="text-xs text-stone-500">Creation = merging Rice + Spice. Merger = merging two Siap Faji.</p>
+      )}
     </div>
   )
 }

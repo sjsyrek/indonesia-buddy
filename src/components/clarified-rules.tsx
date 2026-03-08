@@ -22,8 +22,8 @@ export function ClarifiedRules() {
           <div className="border-t border-sky-100 px-3 pb-3 pt-2 sm:px-4 sm:pb-4">
             <ul className="space-y-2 text-sm text-sky-800 sm:text-base">
               {section.details.map((detail, i) => (
-                <li key={i} className="flex gap-2">
-                  <span className="mt-0.5 shrink-0 text-sky-400" aria-hidden="true">•</span>
+                <li key={i} className="flex items-baseline gap-2">
+                  <span className="shrink-0 text-sky-400" aria-hidden="true">•</span>
                   <span>{detail}</span>
                 </li>
               ))}

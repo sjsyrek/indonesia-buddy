@@ -7,21 +7,36 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Added
+
+- Inter font for cohesive typography across the app
+- SVG favicon (amber "IB" logo) and theme-color meta tag
+- Tab panel fade-in animation with reduced-motion guard
+- Phase stepper indicator (1. Setup → 2. Scoring) in score tracker
+- Card wrapper for setup phase content in score tracker
+- Scroll fade indicator on bid ladder table
+- Dynamic "Net Profit" / "Net Loss" / "Break Even" labels on shipping results
+- Profit/loss badge pills on shipping results
+- Siap Faji helper text explaining Creation vs Merger
+- `inputMode="numeric"` on all number inputs for better mobile keyboards
+- `aria-live="polite"` on score tracker rankings list
+
 ### Changed
 
+- App shell recolored from amber to neutral stone palette for cohesive identity
+- Inactive tab buttons use stone neutrals instead of amber
+- All card borders normalized to consistent `rounded-xl border-stone-200 shadow-sm` style
+- Card spacing and padding standardized across all calculator components
+- Table headers use consistent accent-colored backgrounds
 - Score tracker recolored from green to emerald palette
 - Score tracker "Start Scoring" button changed from yellow to emerald
 - Score tracker "×2" indicator changed from yellow to amber
-- Score tracker checkbox accent changed from yellow to emerald
 - Rules sub-tabs restyled as pill/segmented control to differentiate from main navigation
-- Clarified rules disclosure triangles replaced with custom SVG chevrons that rotate on open
+- Clarified rules disclosure triangles replaced with custom SVG chevrons
 
-### Added
+### Removed
 
-- Phase stepper indicator (1. Setup / 2. Scoring) in score tracker
-- Card wrapper for setup phase content in score tracker
-- `aria-live="polite"` on rankings list for screen reader updates
-- `inputMode="numeric"` on bank/cash input fields for better mobile keyboards
+- Empty `App.css` file
 
 ### Fixed
 

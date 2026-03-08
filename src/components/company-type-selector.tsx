@@ -30,7 +30,7 @@ export function CompanyTypeSelector({ value, onChange }: CompanyTypeSelectorProp
       >
         {MERGER_COMPANY_TYPES.map((type) => (
           <option key={type} value={type}>
-            {DISPLAY_NAMES[type]} — Rp {BASE_PRICES[type]} per unit
+            {DISPLAY_NAMES[type]}: Rp {BASE_PRICES[type]} per unit
           </option>
         ))}
       </select>

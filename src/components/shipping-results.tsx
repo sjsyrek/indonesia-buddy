@@ -76,8 +76,8 @@ export function ShippingResults({ result, currentHops }: ShippingResultsProps) {
       <p className="text-sm font-medium text-teal-800" aria-live="polite">
         Break-even at {result.breakEvenHops} hops
         {currentHops <= result.breakEvenHops
-          ? ' — currently profitable'
-          : ' — currently at a loss'}
+          ? ' (currently profitable)'
+          : ' (currently at a loss)'}
       </p>
     </section>
   )

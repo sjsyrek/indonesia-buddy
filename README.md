@@ -10,7 +10,7 @@ Indonesia is a fantastic game with notoriously fiddly arithmetic. This app handl
 
 ### Merger Calculator
 
-Mergers are where Indonesia gets brutal — bids must be exact multiples of the combined company size, and payments split proportionally between owners. With merged companies of 13 or 17 units, the mental math is painful.
+Mergers are where Indonesia gets brutal: bids must be exact multiples of the combined company size, and payments split proportionally between owners. With merged companies of 13 or 17 units, the mental math is painful.
 
 - Select company type (Shipping, Rice, Spice, Rubber, Oil, Siap Faji)
 - Set company sizes and owner names

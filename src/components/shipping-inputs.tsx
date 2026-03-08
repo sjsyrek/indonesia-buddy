@@ -1,6 +1,16 @@
 import type { CompanyType } from '../lib/types'
 import { SHIPPABLE_GOOD_TYPES, REVENUE_PER_GOOD } from '../lib/game-constants'
 
+const DISPLAY_NAMES: Record<CompanyType, string> = {
+  Shipping: 'Shipping',
+  Rice: 'Rice',
+  Spice: 'Spice',
+  Rubber: 'Rubber',
+  Oil: 'Oil',
+  SiapFajiCreation: 'Siap Faji (Creation)',
+  SiapFajiMerger: 'Siap Faji (Merger)',
+}
+
 interface ShippingInputsProps {
   goodType: CompanyType
   quantity: number
@@ -44,7 +54,7 @@ export function ShippingInputs({
         >
           {SHIPPABLE_GOOD_TYPES.map((type) => (
             <option key={type} value={type}>
-              {type}
+              {DISPLAY_NAMES[type]}
             </option>
           ))}
         </select>

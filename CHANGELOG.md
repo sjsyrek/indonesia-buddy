@@ -7,6 +7,22 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Changed
+
+- Score tracker recolored from green to emerald palette
+- Score tracker "Start Scoring" button changed from yellow to emerald
+- Score tracker "×2" indicator changed from yellow to amber
+- Score tracker checkbox accent changed from yellow to emerald
+- Rules sub-tabs restyled as pill/segmented control to differentiate from main navigation
+- Clarified rules disclosure triangles replaced with custom SVG chevrons that rotate on open
+
+### Added
+
+- Phase stepper indicator (1. Setup / 2. Scoring) in score tracker
+- Card wrapper for setup phase content in score tracker
+- `aria-live="polite"` on rankings list for screen reader updates
+- `inputMode="numeric"` on bank/cash input fields for better mobile keyboards
+
 ### Fixed
 
 - Shipping payment direction: producer pays shipping costs from operating revenue; shippers receive Rp 5/cube (was reversed)

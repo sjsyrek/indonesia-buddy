@@ -27,6 +27,8 @@ export function ScoreTracker() {
   const [playerNames, setPlayerNames] = useState<string[]>([])
   const [players, setPlayers] = useState<PlayerData[]>([])
 
+  const isSetup = phase === 'setup'
+
   function handlePlayerCountSelect(count: number) {
     setPlayerCount(count)
     setPlayerNames(Array.from({ length: count }, (_, i) => playerNames[i] ?? ''))
@@ -70,65 +72,73 @@ export function ScoreTracker() {
       .sort((a, b) => calculateTotal(b) - calculateTotal(a))
   }, [players])
 
-  if (phase === 'setup') {
+  if (isSetup) {
     return (
       <article className="mx-auto max-w-2xl space-y-5 p-4">
-        <h2 className="text-2xl font-bold text-green-900">Score Tracker</h2>
+        <h2 className="text-2xl font-bold text-emerald-900">Score Tracker</h2>
 
-        <fieldset className="space-y-3">
-          <legend className="text-lg font-semibold text-green-800">
-            Number of Players
-          </legend>
-          <div className="flex gap-2" role="group" aria-label="Player count selection">
-            {[2, 3, 4, 5].map((count) => (
-              <button
-                key={count}
-                type="button"
-                onClick={() => handlePlayerCountSelect(count)}
-                className={`rounded-lg px-4 py-2 font-medium transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-green-500 ${
-                  playerCount === count
-                    ? 'bg-green-700 text-white'
-                    : 'bg-green-100 text-green-800 hover:bg-green-200'
-                }`}
-                aria-pressed={playerCount === count}
-              >
-                {count} Players
-              </button>
-            ))}
-          </div>
-        </fieldset>
+        <div className="mb-4 flex items-center justify-center gap-2 text-sm">
+          <span className="font-bold text-emerald-700">1. Setup</span>
+          <span className="text-stone-300">&rarr;</span>
+          <span className="text-stone-400">2. Scoring</span>
+        </div>
 
-        {playerCount !== null && (
-          <div className="space-y-3">
-            <h3 className="text-lg font-semibold text-green-800">Player Names</h3>
-            {Array.from({ length: playerCount }, (_, i) => (
-              <div key={i}>
-                <label
-                  htmlFor={`player-${i + 1}-name`}
-                  className="mb-1 block text-sm font-medium text-green-700"
+        <div className="rounded-xl border border-stone-200 bg-white p-4 shadow-sm sm:p-5">
+          <fieldset className="space-y-3">
+            <legend className="text-lg font-semibold text-emerald-800">
+              Number of Players
+            </legend>
+            <div className="flex gap-2" role="group" aria-label="Player count selection">
+              {[2, 3, 4, 5].map((count) => (
+                <button
+                  key={count}
+                  type="button"
+                  onClick={() => handlePlayerCountSelect(count)}
+                  className={`rounded-lg px-4 py-2 font-medium transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-emerald-500 ${
+                    playerCount === count
+                      ? 'bg-emerald-700 text-white'
+                      : 'bg-emerald-100 text-emerald-800 hover:bg-emerald-200'
+                  }`}
+                  aria-pressed={playerCount === count}
                 >
-                  Player {i + 1} Name
-                </label>
-                <input
-                  id={`player-${i + 1}-name`}
-                  type="text"
-                  value={playerNames[i] ?? ''}
-                  onChange={(e) => handleNameChange(i, e.target.value)}
-                  placeholder={`Player ${i + 1}`}
-                  className="w-full rounded-lg border border-green-300 px-3 py-2 text-green-900 placeholder:text-green-400 focus:border-green-500 focus:outline-none focus:ring-2 focus:ring-green-500"
-                />
-              </div>
-            ))}
+                  {count} Players
+                </button>
+              ))}
+            </div>
+          </fieldset>
 
-            <button
-              type="button"
-              onClick={handleStartScoring}
-              className="w-full rounded-lg bg-yellow-600 px-4 py-3 font-bold text-white transition-colors hover:bg-yellow-700 focus:outline-none focus-visible:ring-2 focus-visible:ring-yellow-500"
-            >
-              Start Scoring
-            </button>
-          </div>
-        )}
+          {playerCount !== null && (
+            <div className="mt-4 space-y-3">
+              <h3 className="text-lg font-semibold text-emerald-800">Player Names</h3>
+              {Array.from({ length: playerCount }, (_, i) => (
+                <div key={i}>
+                  <label
+                    htmlFor={`player-${i + 1}-name`}
+                    className="mb-1 block text-sm font-medium text-emerald-700"
+                  >
+                    Player {i + 1} Name
+                  </label>
+                  <input
+                    id={`player-${i + 1}-name`}
+                    type="text"
+                    value={playerNames[i] ?? ''}
+                    onChange={(e) => handleNameChange(i, e.target.value)}
+                    placeholder={`Player ${i + 1}`}
+                    className="w-full rounded-lg border border-emerald-300 px-3 py-2 text-emerald-900 placeholder:text-emerald-400 focus:border-emerald-500 focus:outline-none focus:ring-2 focus:ring-emerald-500"
+                  />
+                </div>
+              ))}
+
+              <button
+                type="button"
+                onClick={handleStartScoring}
+                className="w-full rounded-lg bg-emerald-600 px-4 py-3 font-bold text-white transition-colors hover:bg-emerald-700 focus:outline-none focus-visible:ring-2 focus-visible:ring-emerald-500"
+              >
+                Start Scoring
+              </button>
+            </div>
+          )}
+        </div>
       </article>
     )
   }
@@ -136,14 +146,20 @@ export function ScoreTracker() {
   return (
     <article className="mx-auto max-w-2xl space-y-6 p-4">
       <div className="flex items-center justify-between">
-        <h2 className="text-2xl font-bold text-green-900">Score Tracker</h2>
+        <h2 className="text-2xl font-bold text-emerald-900">Score Tracker</h2>
         <button
           type="button"
           onClick={handleEditPlayers}
-          className="rounded-lg bg-green-100 px-3 py-1.5 text-sm font-medium text-green-800 transition-colors hover:bg-green-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-green-500"
+          className="rounded-lg bg-emerald-100 px-3 py-1.5 text-sm font-medium text-emerald-800 transition-colors hover:bg-emerald-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-emerald-500"
         >
           Edit Players
         </button>
+      </div>
+
+      <div className="mb-4 flex items-center justify-center gap-2 text-sm">
+        <span className="text-stone-400">1. Setup</span>
+        <span className="text-stone-300">&rarr;</span>
+        <span className="font-bold text-emerald-700">2. Scoring</span>
       </div>
 
       <div className="space-y-6">
@@ -152,16 +168,16 @@ export function ScoreTracker() {
           return (
             <section
               key={index}
-              className="rounded-xl border border-green-200 bg-white p-4 shadow-sm"
+              className="rounded-xl border border-emerald-200 bg-white p-4 shadow-sm"
               aria-label={`${player.name} scoring`}
             >
-              <h3 className="mb-3 text-lg font-bold text-green-800">{player.name}</h3>
+              <h3 className="mb-3 text-lg font-bold text-emerald-800">{player.name}</h3>
 
               <div className="grid grid-cols-2 gap-3">
                 <div>
                   <label
                     htmlFor={`${player.name.toLowerCase()}-bank`}
-                    className="mb-1 block text-sm font-medium text-green-700"
+                    className="mb-1 block text-sm font-medium text-emerald-700"
                   >
                     {player.name} Bank
                   </label>
@@ -169,18 +185,19 @@ export function ScoreTracker() {
                     id={`${player.name.toLowerCase()}-bank`}
                     type="number"
                     min={0}
+                    inputMode="numeric"
                     value={player.bankMoney || ''}
                     onChange={(e) =>
                       updatePlayer(index, { bankMoney: Number(e.target.value) || 0 })
                     }
                     placeholder="0"
-                    className="w-full rounded-lg border border-green-300 px-3 py-2 text-lg font-semibold text-green-900 placeholder:text-green-300 focus:border-green-500 focus:outline-none focus:ring-2 focus:ring-green-500"
+                    className="w-full rounded-lg border border-emerald-300 px-3 py-2 text-lg font-semibold text-emerald-900 placeholder:text-emerald-300 focus:border-emerald-500 focus:outline-none focus:ring-2 focus:ring-emerald-500"
                   />
                 </div>
                 <div>
                   <label
                     htmlFor={`${player.name.toLowerCase()}-cash`}
-                    className="mb-1 block text-sm font-medium text-green-700"
+                    className="mb-1 block text-sm font-medium text-emerald-700"
                   >
                     {player.name} Cash
                   </label>
@@ -188,12 +205,13 @@ export function ScoreTracker() {
                     id={`${player.name.toLowerCase()}-cash`}
                     type="number"
                     min={0}
+                    inputMode="numeric"
                     value={player.cashMoney || ''}
                     onChange={(e) =>
                       updatePlayer(index, { cashMoney: Number(e.target.value) || 0 })
                     }
                     placeholder="0"
-                    className="w-full rounded-lg border border-green-300 px-3 py-2 text-lg font-semibold text-green-900 placeholder:text-green-300 focus:border-green-500 focus:outline-none focus:ring-2 focus:ring-green-500"
+                    className="w-full rounded-lg border border-emerald-300 px-3 py-2 text-lg font-semibold text-emerald-900 placeholder:text-emerald-300 focus:border-emerald-500 focus:outline-none focus:ring-2 focus:ring-emerald-500"
                   />
                 </div>
               </div>
@@ -206,23 +224,23 @@ export function ScoreTracker() {
                   onChange={(e) =>
                     updatePlayer(index, { isDoubleCash: e.target.checked })
                   }
-                  className="h-4 w-4 rounded border-green-300 text-yellow-600 focus:ring-yellow-500"
+                  className="h-4 w-4 rounded border-emerald-300 text-emerald-600 focus:ring-emerald-500"
                   aria-label={`Double cash for ${player.name}`}
                 />
                 <label
                   htmlFor={`${player.name.toLowerCase()}-double`}
-                  className="text-sm font-medium text-green-700"
+                  className="text-sm font-medium text-emerald-700"
                 >
                   Last round cash doubled?
                 </label>
               </div>
 
-              <div className="mt-3 rounded-lg bg-green-50 p-3 text-center">
-                <span className="text-sm text-green-600">Total</span>
-                <p className="text-2xl font-bold text-green-900">
+              <div className="mt-3 rounded-lg bg-emerald-50 p-3 text-center">
+                <span className="text-sm text-emerald-600">Total</span>
+                <p className="text-2xl font-bold text-emerald-900">
                   Rp {total}
                   {player.isDoubleCash && (
-                    <span className="ml-2 text-sm font-normal text-yellow-600">
+                    <span className="ml-2 text-sm font-normal text-amber-600">
                       (Cash ×2)
                     </span>
                   )}
@@ -235,8 +253,8 @@ export function ScoreTracker() {
 
       {players.some((p) => p.bankMoney > 0 || p.cashMoney > 0) && (
         <section aria-label="Rankings" role="region" className="space-y-3">
-          <h3 className="text-lg font-bold text-green-800">Rankings</h3>
-          <ol className="space-y-2">
+          <h3 className="text-lg font-bold text-emerald-800">Rankings</h3>
+          <ol className="space-y-2" aria-live="polite">
             {rankedPlayers.map((player, rank) => {
               const total = calculateTotal(player)
               const isWinner = rank === 0
@@ -247,7 +265,7 @@ export function ScoreTracker() {
                   className={`flex items-center justify-between rounded-lg p-3 ${
                     isWinner
                       ? 'border-2 border-yellow-400 bg-yellow-50 shadow-md'
-                      : 'border border-green-200 bg-white'
+                      : 'border border-emerald-200 bg-white'
                   }`}
                 >
                   <div className="flex items-center gap-3">
@@ -255,20 +273,20 @@ export function ScoreTracker() {
                       className={`inline-flex h-8 w-8 items-center justify-center rounded-full text-sm font-bold ${
                         isWinner
                           ? 'bg-yellow-400 text-yellow-900'
-                          : 'bg-green-100 text-green-700'
+                          : 'bg-emerald-100 text-emerald-700'
                       }`}
                     >
                       {getOrdinal(rank + 1)}
                     </span>
-                    <span className={`font-semibold ${isWinner ? 'text-yellow-900' : 'text-green-800'}`}>
+                    <span className={`font-semibold ${isWinner ? 'text-yellow-900' : 'text-emerald-800'}`}>
                       {player.name}
                     </span>
                   </div>
                   <div className="text-right">
-                    <p className={`text-lg font-bold ${isWinner ? 'text-yellow-900' : 'text-green-900'}`}>
+                    <p className={`text-lg font-bold ${isWinner ? 'text-yellow-900' : 'text-emerald-900'}`}>
                       Rp {total}
                     </p>
-                    <p className="text-xs text-green-600">
+                    <p className="text-xs text-emerald-600">
                       Bank {player.bankMoney} + Cash {player.cashMoney}
                       {player.isDoubleCash && ' ×2'}
                     </p>

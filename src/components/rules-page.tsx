@@ -16,39 +16,41 @@ export function RulesPage() {
         Rules Reference
       </h2>
 
-      <div
-        className="flex rounded-lg bg-sky-100/60 p-1"
-        role="tablist"
-        aria-label="Rules view"
-      >
-        <button
-          role="tab"
-          aria-selected={view === 'aid'}
-          aria-controls="aid-panel"
-          id="aid-tab"
-          className={`min-h-[40px] flex-1 rounded-md px-3 py-2 text-sm font-semibold transition-all focus:outline-none focus-visible:ring-2 focus-visible:ring-sky-600 focus-visible:ring-offset-2 sm:text-base ${
-            view === 'aid'
-              ? 'bg-white text-sky-900 shadow-sm'
-              : 'text-sky-700 hover:bg-sky-50 hover:text-sky-900'
-          }`}
-          onClick={() => setView('aid')}
+      <div className="flex justify-center">
+        <div
+          className="inline-flex rounded-full border border-stone-300 p-0.5"
+          role="tablist"
+          aria-label="Rules view"
         >
-          Player Aid
-        </button>
-        <button
-          role="tab"
-          aria-selected={view === 'clarified'}
-          aria-controls="clarified-panel"
-          id="clarified-tab"
-          className={`min-h-[40px] flex-1 rounded-md px-3 py-2 text-sm font-semibold transition-all focus:outline-none focus-visible:ring-2 focus-visible:ring-sky-600 focus-visible:ring-offset-2 sm:text-base ${
-            view === 'clarified'
-              ? 'bg-white text-sky-900 shadow-sm'
-              : 'text-sky-700 hover:bg-sky-50 hover:text-sky-900'
-          }`}
-          onClick={() => setView('clarified')}
-        >
-          Clarified Rules
-        </button>
+          <button
+            role="tab"
+            aria-selected={view === 'aid'}
+            aria-controls="aid-panel"
+            id="aid-tab"
+            className={`rounded-full px-3 py-1.5 text-xs font-semibold transition-all focus:outline-none focus-visible:ring-2 focus-visible:ring-sky-600 focus-visible:ring-offset-2 sm:text-sm ${
+              view === 'aid'
+                ? 'bg-sky-600 text-white'
+                : 'text-stone-600 hover:text-stone-700'
+            }`}
+            onClick={() => setView('aid')}
+          >
+            Player Aid
+          </button>
+          <button
+            role="tab"
+            aria-selected={view === 'clarified'}
+            aria-controls="clarified-panel"
+            id="clarified-tab"
+            className={`rounded-full px-3 py-1.5 text-xs font-semibold transition-all focus:outline-none focus-visible:ring-2 focus-visible:ring-sky-600 focus-visible:ring-offset-2 sm:text-sm ${
+              view === 'clarified'
+                ? 'bg-sky-600 text-white'
+                : 'text-stone-600 hover:text-stone-700'
+            }`}
+            onClick={() => setView('clarified')}
+          >
+            Clarified Rules
+          </button>
+        </div>
       </div>
 
       <div

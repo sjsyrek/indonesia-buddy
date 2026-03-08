@@ -31,7 +31,7 @@ export const playerAidSections: PlayerAidSection[] = [
       'Mergers: max deeds in a single merger (1–5)',
       'Expansion: areas you can add per operation (1–5)',
       'Hull: goods each ship can carry (1–3). Any player may advance another player\'s Hull!',
-      'Turn Order Bid: multiplier for your turn order bid (×1–×5). Effective bid = cash × multiplier. Highest goes first.',
+      'Turn Order Bid: multiplier for your turn order bid (×1–×400). Effective bid = cash × multiplier. Highest goes first.',
     ],
   },
   {
@@ -138,8 +138,8 @@ export const clarifiedRuleSections: ClarifiedRuleSection[] = [
       'This means the production company owner can be forced into a loss if routes are long. This is a core strategic tension in the game.',
       'Break-even calculation: A good is profitable for the producer if revenue per good > (hops × 5). Rice (Rp 20) breaks even at 4 hops. Oil (Rp 40) breaks even at 8 hops.',
       'When multiple shipping routes exist, the production company\'s owner chooses which route to use. Shortest route is usually preferred to minimize cost.',
-      'Hull R&D track: Increasing Hull lets each ship carry more goods (up to 3), reducing total shipping cost since fewer cargo cubes are needed along the route.',
-      'Strategy tip: Watch for opponents routing goods through long paths via your production companies — they profit from shipping while you pay the cost.',
+      'Hull R&D track: Increasing Hull lets each ship carry more goods (up to 5), reducing total shipping cost since fewer cargo cubes are needed along the route.',
+      'Strategy tip: Watch for opponents\' production companies that must ship through long routes — you profit from shipping while they pay the cost. Conversely, protect your own production companies from expensive routes.',
     ],
   },
   {

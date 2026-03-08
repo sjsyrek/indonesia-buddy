@@ -15,3 +15,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Merger math: minimum bid calculation, bid ladder generation, payment split
 - Shipping math: revenue calculation, shipping cost, net profit, break-even analysis
 - Comprehensive test suites for merger-math (14 tests) and shipping-math (14 tests)
+- Merger Calculator UI: company type selector, size/ownership inputs, bid ladder table, payment breakdown
+- Shipping Calculator UI: good type/quantity/hops inputs, profit/loss display, break-even reference table
+- Tab navigation between merger and shipping calculators with ARIA roles
+- Component test suites for merger calculator (12 tests) and shipping calculator (16 tests)

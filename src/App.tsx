@@ -1,5 +1,4 @@
 import { useState } from 'react'
-import './App.css'
 import { MergerCalculator } from './components/merger-calculator'
 import { ShippingCalculator } from './components/shipping-calculator'
 import { ScoreTracker } from './components/score-tracker'
@@ -11,18 +10,18 @@ function App() {
   const [activeTab, setActiveTab] = useState<Tab>('merger')
 
   return (
-    <main className="min-h-screen bg-gradient-to-b from-amber-50 via-orange-50 to-amber-100 px-3 py-4 sm:px-4 sm:py-6">
+    <main className="min-h-screen bg-gradient-to-b from-stone-50 to-stone-100 px-3 py-4 sm:px-4 sm:py-6">
       <header className="mx-auto max-w-2xl text-center">
-        <h1 className="text-2xl font-bold tracking-tight text-amber-950 sm:text-3xl md:text-4xl">
+        <h1 className="text-2xl font-bold tracking-tight text-stone-900 sm:text-3xl md:text-4xl">
           Indonesia Buddy
         </h1>
-        <p className="mt-1 text-sm text-amber-800 sm:mt-2 sm:text-base">
+        <p className="mt-1 text-sm text-stone-500 sm:mt-2 sm:text-base">
           Calculator companion for the Indonesia board game
         </p>
       </header>
 
       <nav className="mx-auto mt-4 max-w-2xl sm:mt-6" aria-label="Calculator tabs">
-        <div className="flex rounded-lg bg-amber-200/60 p-1" role="tablist">
+        <div className="flex rounded-lg bg-stone-200/60 p-1" role="tablist">
           <button
             role="tab"
             aria-selected={activeTab === 'merger'}
@@ -31,7 +30,7 @@ function App() {
             className={`min-h-[44px] flex-1 rounded-md px-3 py-2.5 text-sm font-semibold transition-all focus:outline-none focus-visible:ring-2 focus-visible:ring-amber-600 focus-visible:ring-offset-2 sm:px-4 sm:text-base ${
               activeTab === 'merger'
                 ? 'bg-white text-amber-900 shadow-sm'
-                : 'text-amber-700 hover:bg-amber-100/60 hover:text-amber-900'
+                : 'text-stone-600 hover:bg-stone-100 hover:text-stone-800'
             }`}
             onClick={() => setActiveTab('merger')}
           >
@@ -46,7 +45,7 @@ function App() {
             className={`min-h-[44px] flex-1 rounded-md px-3 py-2.5 text-sm font-semibold transition-all focus:outline-none focus-visible:ring-2 focus-visible:ring-teal-600 focus-visible:ring-offset-2 sm:px-4 sm:text-base ${
               activeTab === 'shipping'
                 ? 'bg-white text-teal-900 shadow-sm'
-                : 'text-amber-700 hover:bg-amber-100/60 hover:text-amber-900'
+                : 'text-stone-600 hover:bg-stone-100 hover:text-stone-800'
             }`}
             onClick={() => setActiveTab('shipping')}
           >
@@ -61,7 +60,7 @@ function App() {
             className={`min-h-[44px] flex-1 rounded-md px-3 py-2.5 text-sm font-semibold transition-all focus:outline-none focus-visible:ring-2 focus-visible:ring-emerald-600 focus-visible:ring-offset-2 sm:px-4 sm:text-base ${
               activeTab === 'scores'
                 ? 'bg-white text-emerald-900 shadow-sm'
-                : 'text-amber-700 hover:bg-amber-100/60 hover:text-amber-900'
+                : 'text-stone-600 hover:bg-stone-100 hover:text-stone-800'
             }`}
             onClick={() => setActiveTab('scores')}
           >
@@ -75,7 +74,7 @@ function App() {
             className={`min-h-[44px] flex-1 rounded-md px-3 py-2.5 text-sm font-semibold transition-all focus:outline-none focus-visible:ring-2 focus-visible:ring-sky-600 focus-visible:ring-offset-2 sm:px-4 sm:text-base ${
               activeTab === 'rules'
                 ? 'bg-white text-sky-900 shadow-sm'
-                : 'text-amber-700 hover:bg-amber-100/60 hover:text-amber-900'
+                : 'text-stone-600 hover:bg-stone-100 hover:text-stone-800'
             }`}
             onClick={() => setActiveTab('rules')}
           >
@@ -86,35 +85,15 @@ function App() {
 
       <div className="mx-auto mt-4 max-w-2xl sm:mt-6">
         <div
+          key={activeTab}
+          className="tab-enter"
           role="tabpanel"
-          id="merger-panel"
-          aria-labelledby="merger-tab"
-          hidden={activeTab !== 'merger'}
+          id={`${activeTab}-panel`}
+          aria-labelledby={`${activeTab}-tab`}
         >
           {activeTab === 'merger' && <MergerCalculator />}
-        </div>
-        <div
-          role="tabpanel"
-          id="shipping-panel"
-          aria-labelledby="shipping-tab"
-          hidden={activeTab !== 'shipping'}
-        >
           {activeTab === 'shipping' && <ShippingCalculator />}
-        </div>
-        <div
-          role="tabpanel"
-          id="scores-panel"
-          aria-labelledby="scores-tab"
-          hidden={activeTab !== 'scores'}
-        >
           {activeTab === 'scores' && <ScoreTracker />}
-        </div>
-        <div
-          role="tabpanel"
-          id="rules-panel"
-          aria-labelledby="rules-tab"
-          hidden={activeTab !== 'rules'}
-        >
           {activeTab === 'rules' && <RulesPage />}
         </div>
       </div>

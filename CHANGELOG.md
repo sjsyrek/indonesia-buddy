@@ -7,6 +7,26 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Fixed
+
+- Shipping payment direction: producer pays shipping costs from operating revenue; shippers receive Rp 5/cube (was reversed)
+- R&D tracks: corrected to 5 separate tracks (Slots, Mergers, Expansion, Hull, Turn Order Bid) instead of 1 unified track
+- R&D advancement is free (no Rp 10 cost)
+- Turn order: determined by bidding with Turn Order Bid multiplier (not lowest R&D total)
+- City max size: corrected to 3 (was incorrectly 4)
+- City growth condition: requires N goods of every produced type (not N different goods)
+- Era lengths: variable based on company availability (not fixed 3 rounds per era)
+- Phase order: corrected 7-phase sequence (New Era → Turn Order Bid → Mergers → Acquisitions → R&D → Operations → City Growth)
+- Free expansion is mandatory (not optional)
+- Paid expansion costs base price per area per company type (not flat Rp 10)
+- Merger bidders must own a company or have a free slot (not open to all players)
+- Scoring tiebreaker: first in turn order (not most cash)
+- Scoring pools: three pools (cash supply, bid stash, operating revenue) with correct descriptions
+- Bankruptcy uses IOU system (not elimination)
+- Shipping cost timing: revenue received first, then costs deducted
+- Siap Saji creation: new owner must remove half (rounded up) of production areas
+- Spelling: corrected "Siap Faji" to "Siap Saji" throughout
+
 ### Added
 
 - Rules Reference tab with Player Aid (quick reference) and Clarified Rules (detailed explanations)

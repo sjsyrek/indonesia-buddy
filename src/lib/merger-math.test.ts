@@ -62,6 +62,16 @@ describe('merger-math', () => {
       }
     })
 
+    it('produces whole number payments for 14-unit split (9+5, floating-point prone)', () => {
+      // Rp 154 / 14 = Rp 11 per unit; 9/14 * 154 = 99.00000000000001 without rounding
+      const ladder = generateBidLadder(CompanyType.Shipping, 9, 5, 10)
+      for (const entry of ladder) {
+        expect(Number.isInteger(entry.paymentToA)).toBe(true)
+        expect(Number.isInteger(entry.paymentToB)).toBe(true)
+        expect(entry.paymentToA + entry.paymentToB).toBe(entry.bidAmount)
+      }
+    })
+
     it('returns maxIncrements + 1 entries', () => {
       const ladder = generateBidLadder(CompanyType.Spice, 2, 3, 150)
       expect(ladder).toHaveLength(151)

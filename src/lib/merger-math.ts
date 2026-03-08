@@ -22,8 +22,8 @@ export function generateBidLadder(
   for (let i = 0; i <= maxIncrements; i++) {
     const bidAmount = minimumBid + i * totalUnits
     const perUnit = bidAmount / totalUnits
-    const paymentToA = (ownerAUnits / totalUnits) * bidAmount
-    const paymentToB = (ownerBUnits / totalUnits) * bidAmount
+    const paymentToA = Math.round((ownerAUnits / totalUnits) * bidAmount)
+    const paymentToB = Math.round((ownerBUnits / totalUnits) * bidAmount)
 
     ladder.push({ bidAmount, perUnit, paymentToA, paymentToB })
   }
@@ -38,8 +38,8 @@ export function calculatePaymentSplit(
 ): { paymentToA: number; paymentToB: number } {
   const totalUnits = ownerAUnits + ownerBUnits
   return {
-    paymentToA: (ownerAUnits / totalUnits) * winningBid,
-    paymentToB: (ownerBUnits / totalUnits) * winningBid,
+    paymentToA: Math.round((ownerAUnits / totalUnits) * winningBid),
+    paymentToB: Math.round((ownerBUnits / totalUnits) * winningBid),
   }
 }
 

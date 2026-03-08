@@ -7,6 +7,7 @@ const DISPLAY_NAMES: Record<CompanyType, string> = {
   Spice: 'Spice',
   Rubber: 'Rubber',
   Oil: 'Oil',
+  SiapFaji: 'Siap Faji',
   SiapFajiCreation: 'Siap Faji (Creation)',
   SiapFajiMerger: 'Siap Faji (Merger)',
 }

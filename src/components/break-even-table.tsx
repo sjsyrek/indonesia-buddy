@@ -2,6 +2,17 @@ import type { CompanyType } from '../lib/types'
 import { SHIPPABLE_GOOD_TYPES, REVENUE_PER_GOOD } from '../lib/game-constants'
 import { calculateBreakEvenHops } from '../lib/shipping-math'
 
+const DISPLAY_NAMES: Record<CompanyType, string> = {
+  Shipping: 'Shipping',
+  Rice: 'Rice',
+  Spice: 'Spice',
+  Rubber: 'Rubber',
+  Oil: 'Oil',
+  SiapFaji: 'Siap Faji',
+  SiapFajiCreation: 'Siap Faji (Creation)',
+  SiapFajiMerger: 'Siap Faji (Merger)',
+}
+
 interface BreakEvenTableProps {
   selectedGoodType: CompanyType
 }
@@ -40,7 +51,7 @@ export function BreakEvenTable({ selectedGoodType }: BreakEvenTableProps) {
                       : 'text-gray-700 hover:bg-teal-50/50'
                   }`}
                 >
-                  <td className="whitespace-nowrap px-3 py-2">{type}</td>
+                  <td className="whitespace-nowrap px-3 py-2">{DISPLAY_NAMES[type]}</td>
                   <td className="whitespace-nowrap px-3 py-2">Rp {REVENUE_PER_GOOD[type]}</td>
                   <td className="whitespace-nowrap px-3 py-2">{calculateBreakEvenHops(type)}</td>
                 </tr>

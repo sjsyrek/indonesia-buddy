@@ -129,8 +129,8 @@ describe('ShippingCalculator', () => {
       expect(table).toBeInTheDocument()
 
       const rows = within(table).getAllByRole('row')
-      // Header + 6 good types
-      expect(rows).toHaveLength(7)
+      // Header + 5 good types
+      expect(rows).toHaveLength(6)
     })
 
     it('shows correct column headers', () => {

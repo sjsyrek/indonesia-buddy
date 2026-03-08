@@ -4,6 +4,7 @@ export const CompanyType = {
   Spice: 'Spice',
   Rubber: 'Rubber',
   Oil: 'Oil',
+  SiapFaji: 'SiapFaji',
   SiapFajiCreation: 'SiapFajiCreation',
   SiapFajiMerger: 'SiapFajiMerger',
 } as const

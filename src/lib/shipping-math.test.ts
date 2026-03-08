@@ -14,8 +14,7 @@ describe('shipping-math', () => {
       expect(calculateRevenue(CompanyType.Rice, 1)).toBe(20)
       expect(calculateRevenue(CompanyType.Spice, 1)).toBe(25)
       expect(calculateRevenue(CompanyType.Rubber, 1)).toBe(30)
-      expect(calculateRevenue(CompanyType.SiapFajiCreation, 1)).toBe(35)
-      expect(calculateRevenue(CompanyType.SiapFajiMerger, 1)).toBe(35)
+      expect(calculateRevenue(CompanyType.SiapFaji, 1)).toBe(35)
       expect(calculateRevenue(CompanyType.Oil, 1)).toBe(40)
     })
 
@@ -67,8 +66,7 @@ describe('shipping-math', () => {
       expect(calculateBreakEvenHops(CompanyType.Rice)).toBe(4)
       expect(calculateBreakEvenHops(CompanyType.Spice)).toBe(5)
       expect(calculateBreakEvenHops(CompanyType.Rubber)).toBe(6)
-      expect(calculateBreakEvenHops(CompanyType.SiapFajiCreation)).toBe(7)
-      expect(calculateBreakEvenHops(CompanyType.SiapFajiMerger)).toBe(7)
+      expect(calculateBreakEvenHops(CompanyType.SiapFaji)).toBe(7)
       expect(calculateBreakEvenHops(CompanyType.Oil)).toBe(8)
     })
 

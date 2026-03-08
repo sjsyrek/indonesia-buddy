@@ -50,7 +50,7 @@ export function ShippingInputs({
         </select>
       </div>
 
-      <div className="flex flex-col gap-3 sm:flex-row sm:gap-4">
+      <div className="flex flex-col gap-4 sm:flex-row sm:gap-5">
         <div className="flex flex-1 flex-col gap-1.5">
           <label
             htmlFor="quantity"
@@ -61,6 +61,7 @@ export function ShippingInputs({
           <input
             id="quantity"
             type="number"
+            inputMode="numeric"
             min={1}
             max={50}
             value={quantity}
@@ -84,6 +85,7 @@ export function ShippingInputs({
           <input
             id="hops"
             type="number"
+            inputMode="numeric"
             min={0}
             max={15}
             value={hops}

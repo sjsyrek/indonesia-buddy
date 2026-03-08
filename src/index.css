@@ -1,1 +1,4 @@
 @import "tailwindcss";
+
+.scroll-fade-bottom { position: relative; }
+.scroll-fade-bottom::after { content: ''; position: absolute; bottom: 0; left: 0; right: 0; height: 2rem; background: linear-gradient(transparent, white); pointer-events: none; }

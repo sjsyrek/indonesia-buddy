@@ -24,23 +24,32 @@ export function BidLadderTable({
   const nameB = ownerBName || 'Owner B'
 
   return (
-    <div className="space-y-1">
-      <h3 className="text-sm font-semibold text-amber-900">
-        Bid Ladder <span className="font-normal text-amber-700">(minimum bid: Rp {minimumBid})</span>
+    <section className="space-y-2" aria-label="Bid ladder">
+      <h3 className="text-sm font-semibold text-amber-900 sm:text-base">
+        Bid Ladder{' '}
+        <span className="font-normal text-amber-700">(minimum bid: Rp {minimumBid})</span>
       </h3>
       <div
-        className="max-h-96 overflow-y-auto rounded-lg border border-amber-200"
+        className="max-h-96 overflow-x-auto overflow-y-auto rounded-lg border border-amber-200 shadow-sm"
         role="region"
         aria-label="Bid ladder scrollable area"
         tabIndex={0}
       >
-        <table className="w-full text-sm" aria-label="Bid ladder">
+        <table className="w-full min-w-[320px] text-sm" aria-label="Bid ladder">
           <thead className="sticky top-0 bg-amber-100 text-amber-900">
             <tr>
-              <th scope="col" className="px-2 py-2 text-left font-semibold">Bid Amount</th>
-              <th scope="col" className="px-2 py-2 text-right font-semibold">Per Unit</th>
-              <th scope="col" className="px-2 py-2 text-right font-semibold">{nameA}</th>
-              <th scope="col" className="px-2 py-2 text-right font-semibold">{nameB}</th>
+              <th scope="col" className="whitespace-nowrap px-2 py-2.5 text-left text-xs font-semibold sm:px-3 sm:text-sm">
+                Bid Amount
+              </th>
+              <th scope="col" className="whitespace-nowrap px-2 py-2.5 text-right text-xs font-semibold sm:px-3 sm:text-sm">
+                Per Unit
+              </th>
+              <th scope="col" className="whitespace-nowrap px-2 py-2.5 text-right text-xs font-semibold sm:px-3 sm:text-sm">
+                {nameA}
+              </th>
+              <th scope="col" className="whitespace-nowrap px-2 py-2.5 text-right text-xs font-semibold sm:px-3 sm:text-sm">
+                {nameB}
+              </th>
             </tr>
           </thead>
           <tbody>
@@ -62,28 +71,28 @@ export function BidLadderTable({
                   aria-selected={isSelected}
                   aria-label={`Bid Rp ${entry.bidAmount}`}
                   className={[
-                    'cursor-pointer transition-colors',
+                    'min-h-[44px] cursor-pointer transition-colors',
                     'hover:bg-amber-100',
-                    'focus:bg-amber-100 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-amber-500',
+                    'focus:bg-amber-100 focus:outline-none focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-amber-500',
                     isMinimum && !isSelected ? 'bg-amber-50 font-semibold' : '',
                     isSelected ? 'bg-amber-300/60 font-semibold ring-2 ring-inset ring-amber-500' : '',
                   ].join(' ')}
                 >
-                  <td className="px-2 py-1.5">
+                  <td className="whitespace-nowrap px-2 py-2 sm:px-3">
                     Rp {entry.bidAmount}
                     {isMinimum && (
                       <span className="ml-1 text-xs text-amber-700">(min)</span>
                     )}
                   </td>
-                  <td className="px-2 py-1.5 text-right">Rp {entry.perUnit}</td>
-                  <td className="px-2 py-1.5 text-right">Rp {entry.paymentToA}</td>
-                  <td className="px-2 py-1.5 text-right">Rp {entry.paymentToB}</td>
+                  <td className="whitespace-nowrap px-2 py-2 text-right sm:px-3">Rp {entry.perUnit}</td>
+                  <td className="whitespace-nowrap px-2 py-2 text-right sm:px-3">Rp {entry.paymentToA}</td>
+                  <td className="whitespace-nowrap px-2 py-2 text-right sm:px-3">Rp {entry.paymentToB}</td>
                 </tr>
               )
             })}
           </tbody>
         </table>
       </div>
-    </div>
+    </section>
   )
 }

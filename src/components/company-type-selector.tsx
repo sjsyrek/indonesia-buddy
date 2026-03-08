@@ -18,7 +18,7 @@ const DISPLAY_NAMES: Record<CompanyType, string> = {
 
 export function CompanyTypeSelector({ value, onChange }: CompanyTypeSelectorProps) {
   return (
-    <div className="space-y-1">
+    <div className="space-y-1.5">
       <label htmlFor="company-type" className="block text-sm font-semibold text-amber-900">
         Company Type
       </label>
@@ -26,7 +26,7 @@ export function CompanyTypeSelector({ value, onChange }: CompanyTypeSelectorProp
         id="company-type"
         value={value}
         onChange={(e) => onChange(e.target.value as CompanyType)}
-        className="w-full rounded-lg border border-amber-300 bg-amber-50 px-3 py-2 text-amber-900 shadow-sm focus:border-amber-500 focus:ring-2 focus:ring-amber-500 focus:outline-none"
+        className="min-h-[44px] w-full rounded-lg border border-amber-300 bg-amber-50 px-3 py-2.5 text-sm text-amber-900 shadow-sm transition-colors focus:border-amber-500 focus:ring-2 focus:ring-amber-500 focus:outline-none sm:text-base"
       >
         {MERGER_COMPANY_TYPES.map((type) => (
           <option key={type} value={type}>
@@ -34,7 +34,7 @@ export function CompanyTypeSelector({ value, onChange }: CompanyTypeSelectorProp
           </option>
         ))}
       </select>
-      <p className="text-xs text-amber-700">
+      <p className="text-xs text-amber-700 sm:text-sm">
         Base price per unit: <strong>Rp {BASE_PRICES[value]}</strong>
       </p>
     </div>

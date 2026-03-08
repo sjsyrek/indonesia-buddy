@@ -14,25 +14,26 @@ export function PaymentBreakdown({ entry, ownerAName, ownerBName }: PaymentBreak
     <section
       aria-label="Payment Breakdown"
       role="region"
-      className="rounded-lg border-2 border-amber-400 bg-amber-50 p-4"
+      aria-live="polite"
+      className="rounded-xl border-2 border-amber-400 bg-amber-50 p-3 shadow-md sm:p-4"
     >
-      <h3 className="mb-3 text-lg font-bold text-amber-900">Payment Breakdown</h3>
+      <h3 className="mb-3 text-base font-bold text-amber-900 sm:text-lg">Payment Breakdown</h3>
 
-      <div className="grid grid-cols-1 gap-3 sm:grid-cols-3">
+      <div className="grid grid-cols-1 gap-2 sm:grid-cols-3 sm:gap-3">
         <div className="rounded-lg bg-amber-100 p-3 text-center">
           <p className="text-xs font-medium text-amber-700">Total Bid</p>
-          <p className="text-2xl font-bold text-amber-900">Rp {entry.bidAmount}</p>
+          <p className="text-xl font-bold text-amber-900 sm:text-2xl">Rp {entry.bidAmount}</p>
           <p className="text-xs text-amber-600">Rp {entry.perUnit} per unit</p>
         </div>
 
         <div className="rounded-lg bg-amber-100 p-3 text-center">
           <p className="text-xs font-medium text-amber-700">Payment to {nameA}</p>
-          <p className="text-2xl font-bold text-amber-900">Rp {entry.paymentToA}</p>
+          <p className="text-xl font-bold text-amber-900 sm:text-2xl">Rp {entry.paymentToA}</p>
         </div>
 
         <div className="rounded-lg bg-amber-100 p-3 text-center">
           <p className="text-xs font-medium text-amber-700">Payment to {nameB}</p>
-          <p className="text-2xl font-bold text-amber-900">Rp {entry.paymentToB}</p>
+          <p className="text-xl font-bold text-amber-900 sm:text-2xl">Rp {entry.paymentToB}</p>
         </div>
       </div>
     </section>

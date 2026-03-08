@@ -24,15 +24,15 @@ export function ShippingInputs({
     <fieldset className="space-y-4">
       <legend className="sr-only">Shipping inputs</legend>
 
-      <div className="flex flex-col gap-1">
+      <div className="flex flex-col gap-1.5">
         <div className="flex items-center gap-3">
           <label
             htmlFor="good-type"
-            className="text-sm font-medium text-gray-700"
+            className="text-sm font-semibold text-teal-900"
           >
             Good Type
           </label>
-          <span className="text-sm font-semibold text-teal-700">
+          <span className="rounded-md bg-teal-100 px-2 py-0.5 text-sm font-semibold text-teal-700">
             Rp {revenuePerUnit}/unit
           </span>
         </div>
@@ -40,7 +40,7 @@ export function ShippingInputs({
           id="good-type"
           value={goodType}
           onChange={(e) => onGoodTypeChange(e.target.value as CompanyType)}
-          className="rounded-md border border-gray-300 bg-white px-3 py-2 text-gray-900 shadow-sm focus:border-teal-500 focus:ring-2 focus:ring-teal-500 focus:outline-none"
+          className="min-h-[44px] rounded-lg border border-teal-300 bg-teal-50/50 px-3 py-2.5 text-sm text-teal-900 shadow-sm transition-colors focus:border-teal-500 focus:ring-2 focus:ring-teal-500 focus:outline-none sm:text-base"
         >
           {SHIPPABLE_GOOD_TYPES.map((type) => (
             <option key={type} value={type}>
@@ -50,11 +50,11 @@ export function ShippingInputs({
         </select>
       </div>
 
-      <div className="flex flex-col gap-1 sm:flex-row sm:gap-4">
-        <div className="flex flex-1 flex-col gap-1">
+      <div className="flex flex-col gap-3 sm:flex-row sm:gap-4">
+        <div className="flex flex-1 flex-col gap-1.5">
           <label
             htmlFor="quantity"
-            className="text-sm font-medium text-gray-700"
+            className="text-sm font-semibold text-teal-900"
           >
             Quantity
           </label>
@@ -70,14 +70,14 @@ export function ShippingInputs({
                 onQuantityChange(Math.max(1, Math.min(50, val)))
               }
             }}
-            className="rounded-md border border-gray-300 px-3 py-2 text-gray-900 shadow-sm focus:border-teal-500 focus:ring-2 focus:ring-teal-500 focus:outline-none"
+            className="min-h-[44px] rounded-lg border border-teal-300 bg-teal-50/50 px-3 py-2.5 text-sm text-teal-900 shadow-sm transition-colors focus:border-teal-500 focus:ring-2 focus:ring-teal-500 focus:outline-none sm:text-base"
           />
         </div>
 
-        <div className="flex flex-1 flex-col gap-1">
+        <div className="flex flex-1 flex-col gap-1.5">
           <label
             htmlFor="hops"
-            className="text-sm font-medium text-gray-700"
+            className="text-sm font-semibold text-teal-900"
           >
             Hops (route length)
           </label>
@@ -93,7 +93,7 @@ export function ShippingInputs({
                 onHopsChange(Math.max(0, Math.min(15, val)))
               }
             }}
-            className="rounded-md border border-gray-300 px-3 py-2 text-gray-900 shadow-sm focus:border-teal-500 focus:ring-2 focus:ring-teal-500 focus:outline-none"
+            className="min-h-[44px] rounded-lg border border-teal-300 bg-teal-50/50 px-3 py-2.5 text-sm text-teal-900 shadow-sm transition-colors focus:border-teal-500 focus:ring-2 focus:ring-teal-500 focus:outline-none sm:text-base"
           />
         </div>
       </div>

@@ -7,54 +7,54 @@ interface ShippingResultsProps {
 
 export function ShippingResults({ result, currentHops }: ShippingResultsProps) {
   const profitColorClass = result.netProfit > 0
-    ? 'text-green-700'
+    ? 'text-green-800'
     : result.netProfit < 0
-      ? 'text-red-700'
-      : 'text-gray-700'
+      ? 'text-red-800'
+      : 'text-gray-800'
 
   const profitBgClass = result.netProfit > 0
-    ? 'bg-green-50 border-green-200'
+    ? 'bg-green-50 border-green-300'
     : result.netProfit < 0
-      ? 'bg-red-50 border-red-200'
-      : 'bg-gray-50 border-gray-200'
+      ? 'bg-red-50 border-red-300'
+      : 'bg-gray-50 border-gray-300'
 
   return (
-    <section aria-label="Shipping results" className="space-y-3">
-      <h3 className="text-lg font-semibold text-gray-800">Results</h3>
+    <section aria-label="Shipping results" className="space-y-3" aria-live="polite">
+      <h3 className="text-base font-semibold text-teal-900 sm:text-lg">Results</h3>
 
-      <div className="grid grid-cols-1 gap-3 sm:grid-cols-3">
-        <div className="rounded-lg border border-teal-200 bg-teal-50 p-3">
-          <p className="text-sm text-teal-600">Gross Revenue</p>
+      <div className="grid grid-cols-1 gap-2 sm:grid-cols-3 sm:gap-3">
+        <div className="rounded-lg border border-teal-200 bg-teal-50 p-3 shadow-sm">
+          <p className="text-xs font-medium text-teal-700 sm:text-sm">Gross Revenue</p>
           <p
             data-testid="gross-revenue"
-            className="text-2xl font-bold text-teal-800"
+            className="text-xl font-bold text-teal-900 sm:text-2xl"
           >
             Rp {result.grossRevenue}
           </p>
         </div>
 
-        <div className="rounded-lg border border-blue-200 bg-blue-50 p-3">
-          <p className="text-sm text-blue-600">Shipping Cost</p>
+        <div className="rounded-lg border border-blue-200 bg-blue-50 p-3 shadow-sm">
+          <p className="text-xs font-medium text-blue-700 sm:text-sm">Shipping Cost</p>
           <p
             data-testid="shipping-cost"
-            className="text-2xl font-bold text-blue-800"
+            className="text-xl font-bold text-blue-900 sm:text-2xl"
           >
             Rp {result.shippingCost}
           </p>
         </div>
 
-        <div className={`rounded-lg border p-3 ${profitBgClass}`}>
-          <p className="text-sm text-gray-600">Net Profit</p>
+        <div className={`rounded-lg border p-3 shadow-sm ${profitBgClass}`}>
+          <p className="text-xs font-medium text-gray-700 sm:text-sm">Net Profit</p>
           <p
             data-testid="net-profit"
-            className={`text-2xl font-bold ${profitColorClass}`}
+            className={`text-xl font-bold sm:text-2xl ${profitColorClass}`}
           >
             Rp {result.netProfit}
           </p>
         </div>
       </div>
 
-      <p className="text-sm text-gray-600" aria-live="polite">
+      <p className="text-sm font-medium text-teal-800" aria-live="polite">
         Break-even at {result.breakEvenHops} hops
         {currentHops <= result.breakEvenHops
           ? ' — currently profitable'

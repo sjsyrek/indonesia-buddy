@@ -8,21 +8,21 @@ interface BreakEvenTableProps {
 
 export function BreakEvenTable({ selectedGoodType }: BreakEvenTableProps) {
   return (
-    <section aria-label="Break-even reference table" className="mt-6">
-      <h3 className="mb-2 text-lg font-semibold text-gray-800">
+    <section aria-label="Break-even reference table" className="mt-4 sm:mt-6">
+      <h3 className="mb-2 text-base font-semibold text-teal-900 sm:text-lg">
         Break-Even Reference
       </h3>
-      <div className="overflow-x-auto">
-        <table className="w-full text-left text-sm">
+      <div className="overflow-x-auto rounded-lg border border-teal-200 shadow-sm">
+        <table className="w-full min-w-[280px] text-left text-sm">
           <thead>
-            <tr className="border-b border-gray-300">
-              <th className="px-3 py-2 font-medium text-gray-600">
+            <tr className="bg-teal-50">
+              <th scope="col" className="whitespace-nowrap px-3 py-2.5 text-xs font-semibold text-teal-800 sm:text-sm">
                 Good Type
               </th>
-              <th className="px-3 py-2 font-medium text-gray-600">
+              <th scope="col" className="whitespace-nowrap px-3 py-2.5 text-xs font-semibold text-teal-800 sm:text-sm">
                 Revenue/Unit
               </th>
-              <th className="px-3 py-2 font-medium text-gray-600">
+              <th scope="col" className="whitespace-nowrap px-3 py-2.5 text-xs font-semibold text-teal-800 sm:text-sm">
                 Break-Even Hops
               </th>
             </tr>
@@ -34,15 +34,15 @@ export function BreakEvenTable({ selectedGoodType }: BreakEvenTableProps) {
                 <tr
                   key={type}
                   aria-current={isSelected ? 'true' : undefined}
-                  className={`border-b border-gray-200 ${
+                  className={`border-t border-teal-100 transition-colors ${
                     isSelected
-                      ? 'bg-teal-50 font-semibold text-teal-900'
-                      : 'text-gray-700'
+                      ? 'bg-teal-100 font-semibold text-teal-900'
+                      : 'text-gray-700 hover:bg-teal-50/50'
                   }`}
                 >
-                  <td className="px-3 py-2">{type}</td>
-                  <td className="px-3 py-2">Rp {REVENUE_PER_GOOD[type]}</td>
-                  <td className="px-3 py-2">{calculateBreakEvenHops(type)}</td>
+                  <td className="whitespace-nowrap px-3 py-2">{type}</td>
+                  <td className="whitespace-nowrap px-3 py-2">Rp {REVENUE_PER_GOOD[type]}</td>
+                  <td className="whitespace-nowrap px-3 py-2">{calculateBreakEvenHops(type)}</td>
                 </tr>
               )
             })}

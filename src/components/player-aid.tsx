@@ -18,7 +18,7 @@ export function PlayerAid() {
           <ul className="space-y-1 text-sm text-sky-800 sm:text-base">
             {section.content.map((item, i) => (
               <li key={i} className="flex gap-2">
-                <span className="mt-1 shrink-0 text-sky-400" aria-hidden="true">•</span>
+                <span className="mt-0.5 shrink-0 text-sky-400" aria-hidden="true">•</span>
                 <span>{item}</span>
               </li>
             ))}

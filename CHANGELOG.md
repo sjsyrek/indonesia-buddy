@@ -19,3 +19,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Shipping Calculator UI: good type/quantity/hops inputs, profit/loss display, break-even reference table
 - Tab navigation between merger and shipping calculators with ARIA roles
 - Component test suites for merger calculator (12 tests) and shipping calculator (16 tests)
+- Score tracker: player setup (2-5), bank/cash inputs, final-round doubling, ranked results (21 tests)
+- Score tracker tab in navigation
+- Mobile-first responsive layout with touch-friendly targets (44x44px min)
+- Game-themed visual design: amber/orange for merger, teal for shipping, emerald for scores
+- Accessibility: aria-live regions, focus-visible indicators, semantic HTML sections
+- Production build configured for GitHub Pages (base path /indonesia-buddy/)

@@ -2,8 +2,9 @@ import { useState } from 'react'
 import './App.css'
 import { MergerCalculator } from './components/merger-calculator'
 import { ShippingCalculator } from './components/shipping-calculator'
+import { ScoreTracker } from './components/score-tracker'
 
-type Tab = 'merger' | 'shipping'
+type Tab = 'merger' | 'shipping' | 'scores'
 
 function App() {
   const [activeTab, setActiveTab] = useState<Tab>('merger')
@@ -49,6 +50,20 @@ function App() {
           >
             Shipping Calculator
           </button>
+          <button
+            role="tab"
+            aria-selected={activeTab === 'scores'}
+            aria-controls="scores-panel"
+            id="scores-tab"
+            className={`min-h-[44px] flex-1 rounded-md px-3 py-2.5 text-sm font-semibold transition-all focus:outline-none focus-visible:ring-2 focus-visible:ring-emerald-600 focus-visible:ring-offset-2 sm:px-4 sm:text-base ${
+              activeTab === 'scores'
+                ? 'bg-white text-emerald-900 shadow-sm'
+                : 'text-amber-700 hover:bg-amber-100/60 hover:text-amber-900'
+            }`}
+            onClick={() => setActiveTab('scores')}
+          >
+            Scores
+          </button>
         </div>
       </nav>
 
@@ -68,6 +83,14 @@ function App() {
           hidden={activeTab !== 'shipping'}
         >
           {activeTab === 'shipping' && <ShippingCalculator />}
+        </div>
+        <div
+          role="tabpanel"
+          id="scores-panel"
+          aria-labelledby="scores-tab"
+          hidden={activeTab !== 'scores'}
+        >
+          {activeTab === 'scores' && <ScoreTracker />}
         </div>
       </div>
     </main>

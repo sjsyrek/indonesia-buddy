@@ -3,8 +3,9 @@ import './App.css'
 import { MergerCalculator } from './components/merger-calculator'
 import { ShippingCalculator } from './components/shipping-calculator'
 import { ScoreTracker } from './components/score-tracker'
+import { RulesPage } from './components/rules-page'
 
-type Tab = 'merger' | 'shipping' | 'scores'
+type Tab = 'merger' | 'shipping' | 'scores' | 'rules'
 
 function App() {
   const [activeTab, setActiveTab] = useState<Tab>('merger')
@@ -34,7 +35,8 @@ function App() {
             }`}
             onClick={() => setActiveTab('merger')}
           >
-            Merger Calculator
+            <span className="sm:hidden">Merger</span>
+            <span className="hidden sm:inline">Merger Calculator</span>
           </button>
           <button
             role="tab"
@@ -48,7 +50,8 @@ function App() {
             }`}
             onClick={() => setActiveTab('shipping')}
           >
-            Shipping Calculator
+            <span className="sm:hidden">Shipping</span>
+            <span className="hidden sm:inline">Shipping Calculator</span>
           </button>
           <button
             role="tab"
@@ -63,6 +66,20 @@ function App() {
             onClick={() => setActiveTab('scores')}
           >
             Scores
+          </button>
+          <button
+            role="tab"
+            aria-selected={activeTab === 'rules'}
+            aria-controls="rules-panel"
+            id="rules-tab"
+            className={`min-h-[44px] flex-1 rounded-md px-3 py-2.5 text-sm font-semibold transition-all focus:outline-none focus-visible:ring-2 focus-visible:ring-sky-600 focus-visible:ring-offset-2 sm:px-4 sm:text-base ${
+              activeTab === 'rules'
+                ? 'bg-white text-sky-900 shadow-sm'
+                : 'text-amber-700 hover:bg-amber-100/60 hover:text-amber-900'
+            }`}
+            onClick={() => setActiveTab('rules')}
+          >
+            Rules
           </button>
         </div>
       </nav>
@@ -91,6 +108,14 @@ function App() {
           hidden={activeTab !== 'scores'}
         >
           {activeTab === 'scores' && <ScoreTracker />}
+        </div>
+        <div
+          role="tabpanel"
+          id="rules-panel"
+          aria-labelledby="rules-tab"
+          hidden={activeTab !== 'rules'}
+        >
+          {activeTab === 'rules' && <RulesPage />}
         </div>
       </div>
     </main>

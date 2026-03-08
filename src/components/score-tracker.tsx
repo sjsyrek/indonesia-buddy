@@ -88,7 +88,7 @@ export function ScoreTracker() {
             <legend className="text-lg font-semibold text-emerald-800">
               Number of Players
             </legend>
-            <div className="flex gap-2" role="group" aria-label="Player count selection">
+            <div className="flex flex-wrap gap-2" role="group" aria-label="Player count selection">
               {[2, 3, 4, 5].map((count) => (
                 <button
                   key={count}

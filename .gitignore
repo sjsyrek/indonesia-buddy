@@ -14,6 +14,9 @@ dist/
 # OS
 .DS_Store
 
+# Beads issue tracker
+.beads/
+
 # Dolt database files (added by bd init)
 .dolt/
 *.db

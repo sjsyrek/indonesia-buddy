@@ -7,8 +7,32 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [1.0.0] - 2026-03-08
+
 ### Added
 
+- Project scaffolding: Vite + React 19 + TypeScript + Tailwind CSS v4 + Vitest
+- TypeScript types for company types, players, merger inputs/results, shipping inputs/results
+- Game constants module with base prices, revenue rates, and shipping cost per hop
+- Merger math: minimum bid calculation, bid ladder generation, payment split
+- Shipping math: revenue calculation, shipping cost, net profit, break-even analysis
+- Comprehensive test suites for merger-math (14 tests) and shipping-math (14 tests)
+- Merger Calculator UI: company type selector, size/ownership inputs, bid ladder table, payment breakdown
+- Shipping Calculator UI: good type/quantity/hops inputs, profit/loss display, break-even reference table
+- Tab navigation between merger and shipping calculators with ARIA roles
+- Component test suites for merger calculator (12 tests) and shipping calculator (16 tests)
+- Score tracker: player setup (2-5), bank/cash inputs, final-round doubling, ranked results (21 tests)
+- Score tracker tab in navigation
+- Mobile-first responsive layout with touch-friendly targets (44x44px min)
+- Game-themed visual design: amber/orange for merger, teal for shipping, emerald for scores
+- Accessibility: aria-live regions, focus-visible indicators, semantic HTML sections
+- Production build configured for GitHub Pages (base path /indonesia-buddy/)
+- Rules Reference tab with Player Aid (quick reference) and Clarified Rules (detailed explanations)
+- Player Aid: 8 scannable sections covering turn structure, R&D tracks, company types, expansion, shipping, city growth, mergers, scoring
+- Clarified Rules: 6 collapsible sections with detailed explanations for expansion, shipping, mergers, cash flow, city growth, R&D strategy
+- Typed rules content data layer (`rules-content.ts`) with validation tests
+- Sky/blue color theme for Rules tab
+- Shortened mobile tab labels ("Merger", "Shipping") for 4-tab layout
 - Inter font for cohesive typography across the app
 - SVG favicon (amber "IB" logo) and theme-color meta tag
 - Tab panel fade-in animation with reduced-motion guard
@@ -23,6 +47,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Changed
 
+- Tab navigation expanded from 3 to 4 tabs (Merger, Shipping, Scores, Rules)
 - App shell recolored from amber to neutral stone palette for cohesive identity
 - Inactive tab buttons use stone neutrals instead of amber
 - All card borders normalized to consistent `rounded-xl border-stone-200 shadow-sm` style
@@ -57,35 +82,3 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Shipping cost timing: revenue received first, then costs deducted
 - Siap Saji creation: new owner must remove half (rounded up) of production areas
 - Spelling: kept "Siap Faji" per official English rulebook (matches codebase types)
-
-### Added
-
-- Rules Reference tab with Player Aid (quick reference) and Clarified Rules (detailed explanations)
-- Player Aid: 8 scannable sections covering turn structure, R&D tracks, company types, expansion, shipping, city growth, mergers, scoring
-- Clarified Rules: 6 collapsible sections with detailed explanations for expansion, shipping, mergers, cash flow, city growth, R&D strategy
-- Typed rules content data layer (`rules-content.ts`) with validation tests
-- Sky/blue color theme for Rules tab
-- Shortened mobile tab labels ("Merger", "Shipping") for 4-tab layout
-
-### Changed
-
-- Tab navigation expanded from 3 to 4 tabs (Merger, Shipping, Scores, Rules)
-
-### Previously Added
-
-- Project scaffolding: Vite + React 19 + TypeScript + Tailwind CSS v4 + Vitest
-- TypeScript types for company types, players, merger inputs/results, shipping inputs/results
-- Game constants module with base prices, revenue rates, and shipping cost per hop
-- Merger math: minimum bid calculation, bid ladder generation, payment split
-- Shipping math: revenue calculation, shipping cost, net profit, break-even analysis
-- Comprehensive test suites for merger-math (14 tests) and shipping-math (14 tests)
-- Merger Calculator UI: company type selector, size/ownership inputs, bid ladder table, payment breakdown
-- Shipping Calculator UI: good type/quantity/hops inputs, profit/loss display, break-even reference table
-- Tab navigation between merger and shipping calculators with ARIA roles
-- Component test suites for merger calculator (12 tests) and shipping calculator (16 tests)
-- Score tracker: player setup (2-5), bank/cash inputs, final-round doubling, ranked results (21 tests)
-- Score tracker tab in navigation
-- Mobile-first responsive layout with touch-friendly targets (44x44px min)
-- Game-themed visual design: amber/orange for merger, teal for shipping, emerald for scores
-- Accessibility: aria-live regions, focus-visible indicators, semantic HTML sections
-- Production build configured for GitHub Pages (base path /indonesia-buddy/)

@@ -94,17 +94,17 @@ function App() {
       </nav>
 
       <div className="mx-auto mt-4 max-w-2xl sm:mt-6">
-        <div
-          key={activeTab}
-          className="tab-enter"
-          role="tabpanel"
-          id={`${activeTab}-panel`}
-          aria-labelledby={`${activeTab}-tab`}
-        >
-          {activeTab === 'merger' && <MergerCalculator />}
-          {activeTab === 'shipping' && <ShippingCalculator />}
-          {activeTab === 'scores' && <ScoreTracker />}
-          {activeTab === 'rules' && <RulesPage />}
+        <div role="tabpanel" id="merger-panel" aria-labelledby="merger-tab" hidden={activeTab !== 'merger'}>
+          <MergerCalculator />
+        </div>
+        <div role="tabpanel" id="shipping-panel" aria-labelledby="shipping-tab" hidden={activeTab !== 'shipping'}>
+          <ShippingCalculator />
+        </div>
+        <div role="tabpanel" id="scores-panel" aria-labelledby="scores-tab" hidden={activeTab !== 'scores'}>
+          <ScoreTracker />
+        </div>
+        <div role="tabpanel" id="rules-panel" aria-labelledby="rules-tab" hidden={activeTab !== 'rules'}>
+          <RulesPage />
         </div>
       </div>
     </main>

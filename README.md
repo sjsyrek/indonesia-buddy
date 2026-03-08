@@ -13,7 +13,7 @@ Indonesia is a fantastic game with notoriously fiddly arithmetic. This app handl
 Mergers are where Indonesia gets brutal: bids must be exact multiples of the combined company size, and payments split proportionally between owners. With merged companies of 13 or 17 units, the mental math is painful.
 
 - Select company type (Shipping, Rice, Spice, Rubber, Oil, Siap Faji)
-- Set company sizes and owner names
+- Set company sizes and optional owner names
 - View a scrollable bid ladder with every valid bid
 - Click any bid to see the exact payment split
 
@@ -30,9 +30,17 @@ Should you ship those goods across 6 hops or is that a guaranteed loss? This cal
 
 Track end-game scoring for 2–5 players.
 
+- Set player count and enter names
 - Enter bank and cash totals for each player
 - Toggle final-round cash doubling per player
 - Automatic ranking with winner highlighted
+
+### Rules Reference
+
+Quick-access reference for Indonesia's rules, in two views:
+
+- **Player Aid**: structured sections covering turn structure, R&D tracks, company types, expansion, shipping costs, city growth, mergers, scoring, and more
+- **Clarified Rules**: expandable deep-dives into the trickiest rules (expansion edge cases, forced shipping, merger step-by-step, cash flow, city growth conditions, R&D strategy)
 
 ## Development
 

@@ -1,3 +1,5 @@
+import { useState } from 'react'
+
 interface CompanySizeInputsProps {
   ownerAUnits: number
   ownerBUnits: number
@@ -19,7 +21,34 @@ export function CompanySizeInputs({
   onOwnerANameChange,
   onOwnerBNameChange,
 }: CompanySizeInputsProps) {
+  const [unitADisplay, setUnitADisplay] = useState(String(ownerAUnits))
+  const [unitBDisplay, setUnitBDisplay] = useState(String(ownerBUnits))
+
   const totalUnits = ownerAUnits + ownerBUnits
+
+  function handleUnitAChange(raw: string) {
+    setUnitADisplay(raw)
+    const n = Number(raw)
+    if (raw !== '' && !Number.isNaN(n)) onOwnerAUnitsChange(clampUnits(n))
+  }
+
+  function handleUnitABlur() {
+    const clamped = clampUnits(Number(unitADisplay))
+    onOwnerAUnitsChange(clamped)
+    setUnitADisplay(String(clamped))
+  }
+
+  function handleUnitBChange(raw: string) {
+    setUnitBDisplay(raw)
+    const n = Number(raw)
+    if (raw !== '' && !Number.isNaN(n)) onOwnerBUnitsChange(clampUnits(n))
+  }
+
+  function handleUnitBBlur() {
+    const clamped = clampUnits(Number(unitBDisplay))
+    onOwnerBUnitsChange(clamped)
+    setUnitBDisplay(String(clamped))
+  }
 
   return (
     <fieldset className="space-y-4">
@@ -50,8 +79,9 @@ export function CompanySizeInputs({
               inputMode="numeric"
               min={1}
               max={20}
-              value={ownerAUnits}
-              onChange={(e) => onOwnerAUnitsChange(clampUnits(Number(e.target.value)))}
+              value={unitADisplay}
+              onChange={(e) => handleUnitAChange(e.target.value)}
+              onBlur={handleUnitABlur}
               className="mt-1 min-h-[44px] w-full rounded-md border border-amber-300 bg-white px-3 py-2 text-sm text-amber-900 transition-colors focus:border-amber-500 focus:ring-2 focus:ring-amber-500 focus:outline-none"
             />
           </div>
@@ -81,8 +111,9 @@ export function CompanySizeInputs({
               inputMode="numeric"
               min={1}
               max={20}
-              value={ownerBUnits}
-              onChange={(e) => onOwnerBUnitsChange(clampUnits(Number(e.target.value)))}
+              value={unitBDisplay}
+              onChange={(e) => handleUnitBChange(e.target.value)}
+              onBlur={handleUnitBBlur}
               className="mt-1 min-h-[44px] w-full rounded-md border border-amber-300 bg-white px-3 py-2 text-sm text-amber-900 transition-colors focus:border-amber-500 focus:ring-2 focus:ring-amber-500 focus:outline-none"
             />
           </div>

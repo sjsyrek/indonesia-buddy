@@ -15,25 +15,25 @@ export function PaymentBreakdown({ entry, ownerAName, ownerBName }: PaymentBreak
       aria-label="Payment Breakdown"
       role="region"
       aria-live="polite"
-      className="rounded-xl border-2 border-amber-200 bg-amber-50 p-4 shadow-sm sm:p-5"
+      className="rounded-xl border-2 border-amber-800 bg-amber-950/40 p-4 shadow-sm sm:p-5"
     >
-      <h3 className="mb-3 text-base font-bold text-amber-900 sm:text-lg">Payment Breakdown</h3>
+      <h3 className="mb-3 text-base font-bold text-amber-300 sm:text-lg">Payment Breakdown</h3>
 
       <div className="grid grid-cols-1 gap-4 sm:grid-cols-3 sm:gap-5">
-        <div className="rounded-lg bg-amber-100 p-3 text-center">
-          <p className="text-xs font-medium text-amber-700">Total Bid</p>
-          <p className="text-xl font-bold text-amber-900 sm:text-2xl">Rp {entry.bidAmount}</p>
-          <p className="text-xs text-amber-600">Rp {entry.perUnit} per unit</p>
+        <div className="rounded-lg bg-amber-900/30 p-3 text-center">
+          <p className="text-xs font-medium text-amber-400">Total Bid</p>
+          <p className="text-xl font-bold text-amber-300 sm:text-2xl">Rp {entry.bidAmount}</p>
+          <p className="text-xs text-amber-400">Rp {entry.perUnit} per unit</p>
         </div>
 
-        <div className="rounded-lg bg-amber-100 p-3 text-center">
-          <p className="text-xs font-medium text-amber-700">Payment to {nameA}</p>
-          <p className="text-xl font-bold text-amber-900 sm:text-2xl">Rp {entry.paymentToA}</p>
+        <div className="rounded-lg bg-amber-900/30 p-3 text-center">
+          <p className="text-xs font-medium text-amber-400">Payment to {nameA}</p>
+          <p className="text-xl font-bold text-amber-300 sm:text-2xl">Rp {entry.paymentToA}</p>
         </div>
 
-        <div className="rounded-lg bg-amber-100 p-3 text-center">
-          <p className="text-xs font-medium text-amber-700">Payment to {nameB}</p>
-          <p className="text-xl font-bold text-amber-900 sm:text-2xl">Rp {entry.paymentToB}</p>
+        <div className="rounded-lg bg-amber-900/30 p-3 text-center">
+          <p className="text-xs font-medium text-amber-400">Payment to {nameB}</p>
+          <p className="text-xl font-bold text-amber-300 sm:text-2xl">Rp {entry.paymentToB}</p>
         </div>
       </div>
     </section>

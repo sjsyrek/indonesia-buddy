@@ -10,15 +10,15 @@ export function RulesPage() {
   return (
     <article
       aria-label="Rules reference"
-      className="space-y-4 rounded-xl border border-sky-200 bg-white p-3 shadow-md sm:space-y-6 sm:p-5"
+      className="space-y-4 rounded-xl border border-sky-800 bg-[#132038] p-3 shadow-md sm:space-y-6 sm:p-5"
     >
-      <h2 className="text-xl font-bold text-sky-900 sm:text-2xl">
+      <h2 className="text-xl font-bold text-sky-300 sm:text-2xl">
         Rules Reference
       </h2>
 
       <div className="flex justify-center">
         <div
-          className="inline-flex rounded-full border border-stone-300 p-0.5"
+          className="inline-flex rounded-full border border-slate-600 p-0.5"
           role="tablist"
           aria-label="Rules view"
         >
@@ -29,8 +29,8 @@ export function RulesPage() {
             id="aid-tab"
             className={`rounded-full px-3 py-1.5 text-xs font-semibold transition-all focus:outline-none focus-visible:ring-2 focus-visible:ring-sky-600 focus-visible:ring-offset-2 sm:text-sm ${
               view === 'aid'
-                ? 'bg-sky-600 text-white'
-                : 'text-stone-600 hover:text-stone-700'
+                ? 'bg-sky-700 text-white'
+                : 'text-slate-400 hover:text-slate-200'
             }`}
             onClick={() => setView('aid')}
           >
@@ -43,8 +43,8 @@ export function RulesPage() {
             id="clarified-tab"
             className={`rounded-full px-3 py-1.5 text-xs font-semibold transition-all focus:outline-none focus-visible:ring-2 focus-visible:ring-sky-600 focus-visible:ring-offset-2 sm:text-sm ${
               view === 'clarified'
-                ? 'bg-sky-600 text-white'
-                : 'text-stone-600 hover:text-stone-700'
+                ? 'bg-sky-700 text-white'
+                : 'text-slate-400 hover:text-slate-200'
             }`}
             onClick={() => setView('clarified')}
           >

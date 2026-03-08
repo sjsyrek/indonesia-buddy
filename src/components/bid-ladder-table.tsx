@@ -25,19 +25,19 @@ export function BidLadderTable({
 
   return (
     <section className="space-y-4" aria-label="Bid ladder">
-      <h3 className="text-sm font-semibold text-amber-900 sm:text-base">
+      <h3 className="text-sm font-semibold text-amber-300 sm:text-base">
         Bid Ladder{' '}
-        <span className="font-normal text-amber-700">(minimum bid: Rp {minimumBid})</span>
+        <span className="font-normal text-amber-400">(minimum bid: Rp {minimumBid})</span>
       </h3>
       <div className="scroll-fade-bottom">
       <div
-        className="max-h-96 overflow-x-auto overflow-y-auto rounded-xl border border-stone-200 bg-white shadow-sm"
+        className="max-h-96 overflow-x-auto overflow-y-auto rounded-xl border border-[#1e3354] bg-[#132038] shadow-sm"
         role="region"
         aria-label="Bid ladder scrollable area"
         tabIndex={0}
       >
         <table className="w-full min-w-[320px] text-sm" aria-label="Bid ladder">
-          <thead className="sticky top-0 bg-amber-100 text-amber-900">
+          <thead className="sticky top-0 bg-amber-900/30 text-amber-300">
             <tr>
               <th scope="col" className="whitespace-nowrap px-2 py-2.5 text-left text-xs font-semibold sm:px-3 sm:text-sm">
                 Bid Amount
@@ -73,16 +73,16 @@ export function BidLadderTable({
                   aria-label={`Bid Rp ${entry.bidAmount}`}
                   className={[
                     'min-h-[44px] cursor-pointer transition-colors',
-                    'hover:bg-amber-100',
-                    'focus:bg-amber-100 focus:outline-none focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-amber-500',
-                    isMinimum && !isSelected ? 'bg-amber-50 font-semibold' : '',
-                    isSelected ? 'bg-amber-300/60 font-semibold ring-2 ring-inset ring-amber-500' : '',
+                    'hover:bg-amber-900/40',
+                    'focus:bg-amber-900/40 focus:outline-none focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-amber-500',
+                    isMinimum && !isSelected ? 'bg-amber-950/40 font-semibold' : '',
+                    isSelected ? 'bg-amber-700/40 font-semibold ring-2 ring-inset ring-amber-500' : '',
                   ].join(' ')}
                 >
                   <td className="whitespace-nowrap px-2 py-2 sm:px-3">
                     Rp {entry.bidAmount}
                     {isMinimum && (
-                      <span className="ml-1 text-xs text-amber-700">(min)</span>
+                      <span className="ml-1 text-xs text-amber-400">(min)</span>
                     )}
                   </td>
                   <td className="whitespace-nowrap px-2 py-2 text-right sm:px-3">Rp {entry.perUnit}</td>

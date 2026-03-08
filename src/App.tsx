@@ -20,18 +20,18 @@ function App() {
   }
 
   return (
-    <main className="min-h-screen bg-gradient-to-b from-stone-50 to-stone-100 px-3 py-4 sm:px-4 sm:py-6">
+    <main className="min-h-screen bg-[#0d1421] px-3 py-4 sm:px-4 sm:py-6">
       <header className="mx-auto max-w-2xl text-center">
-        <h1 className="text-2xl font-bold tracking-tight text-stone-900 sm:text-3xl md:text-4xl">
+        <h1 className="text-2xl font-bold tracking-tight text-amber-50 sm:text-3xl md:text-4xl">
           Indonesia Buddy
         </h1>
-        <p className="mt-1 text-sm text-stone-500 sm:mt-2 sm:text-base">
+        <p className="mt-1 text-sm text-slate-400 sm:mt-2 sm:text-base">
           Calculator companion for the Indonesia board game
         </p>
       </header>
 
       <nav className="mx-auto mt-4 max-w-2xl sm:mt-6" aria-label="Calculator tabs">
-        <div className="flex rounded-lg bg-stone-200/60 p-1" role="tablist">
+        <div className="flex rounded-lg bg-black/40 p-1" role="tablist">
           <button
             role="tab"
             aria-selected={activeTab === 'merger'}
@@ -39,8 +39,8 @@ function App() {
             id="merger-tab"
             className={`min-h-[44px] flex-1 rounded-md px-3 py-2.5 text-sm font-semibold transition-all focus:outline-none focus-visible:ring-2 focus-visible:ring-amber-600 focus-visible:ring-offset-2 sm:px-4 sm:text-base ${
               activeTab === 'merger'
-                ? 'bg-white text-amber-900 shadow-sm'
-                : 'text-stone-600 hover:bg-stone-100 hover:text-stone-800'
+                ? 'bg-[#1a2d4e] text-amber-300 shadow-sm'
+                : 'text-slate-400 hover:bg-white/5 hover:text-slate-200'
             }`}
             onClick={() => switchTab('merger')}
           >
@@ -54,8 +54,8 @@ function App() {
             id="shipping-tab"
             className={`min-h-[44px] flex-1 rounded-md px-3 py-2.5 text-sm font-semibold transition-all focus:outline-none focus-visible:ring-2 focus-visible:ring-teal-600 focus-visible:ring-offset-2 sm:px-4 sm:text-base ${
               activeTab === 'shipping'
-                ? 'bg-white text-teal-900 shadow-sm'
-                : 'text-stone-600 hover:bg-stone-100 hover:text-stone-800'
+                ? 'bg-[#1a2d4e] text-teal-300 shadow-sm'
+                : 'text-slate-400 hover:bg-white/5 hover:text-slate-200'
             }`}
             onClick={() => switchTab('shipping')}
           >
@@ -69,8 +69,8 @@ function App() {
             id="scores-tab"
             className={`min-h-[44px] flex-1 rounded-md px-3 py-2.5 text-sm font-semibold transition-all focus:outline-none focus-visible:ring-2 focus-visible:ring-emerald-600 focus-visible:ring-offset-2 sm:px-4 sm:text-base ${
               activeTab === 'scores'
-                ? 'bg-white text-emerald-900 shadow-sm'
-                : 'text-stone-600 hover:bg-stone-100 hover:text-stone-800'
+                ? 'bg-[#1a2d4e] text-emerald-300 shadow-sm'
+                : 'text-slate-400 hover:bg-white/5 hover:text-slate-200'
             }`}
             onClick={() => switchTab('scores')}
           >
@@ -83,8 +83,8 @@ function App() {
             id="rules-tab"
             className={`min-h-[44px] flex-1 rounded-md px-3 py-2.5 text-sm font-semibold transition-all focus:outline-none focus-visible:ring-2 focus-visible:ring-sky-600 focus-visible:ring-offset-2 sm:px-4 sm:text-base ${
               activeTab === 'rules'
-                ? 'bg-white text-sky-900 shadow-sm'
-                : 'text-stone-600 hover:bg-stone-100 hover:text-stone-800'
+                ? 'bg-[#1a2d4e] text-sky-300 shadow-sm'
+                : 'text-slate-400 hover:bg-white/5 hover:text-slate-200'
             }`}
             onClick={() => switchTab('rules')}
           >

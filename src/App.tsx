@@ -7,7 +7,17 @@ import { RulesPage } from './components/rules-page'
 type Tab = 'merger' | 'shipping' | 'scores' | 'rules'
 
 function App() {
-  const [activeTab, setActiveTab] = useState<Tab>('merger')
+  const [activeTab, setActiveTab] = useState<Tab>(() => {
+    const saved = localStorage.getItem('indonesia-buddy-tab')
+    return saved && ['merger', 'shipping', 'scores', 'rules'].includes(saved)
+      ? (saved as Tab)
+      : 'merger'
+  })
+
+  const switchTab = (tab: Tab) => {
+    setActiveTab(tab)
+    localStorage.setItem('indonesia-buddy-tab', tab)
+  }
 
   return (
     <main className="min-h-screen bg-gradient-to-b from-stone-50 to-stone-100 px-3 py-4 sm:px-4 sm:py-6">
@@ -32,7 +42,7 @@ function App() {
                 ? 'bg-white text-amber-900 shadow-sm'
                 : 'text-stone-600 hover:bg-stone-100 hover:text-stone-800'
             }`}
-            onClick={() => setActiveTab('merger')}
+            onClick={() => switchTab('merger')}
           >
             <span className="sm:hidden">Merger</span>
             <span className="hidden sm:inline">Merger Calculator</span>
@@ -47,7 +57,7 @@ function App() {
                 ? 'bg-white text-teal-900 shadow-sm'
                 : 'text-stone-600 hover:bg-stone-100 hover:text-stone-800'
             }`}
-            onClick={() => setActiveTab('shipping')}
+            onClick={() => switchTab('shipping')}
           >
             <span className="sm:hidden">Shipping</span>
             <span className="hidden sm:inline">Shipping Calculator</span>
@@ -62,7 +72,7 @@ function App() {
                 ? 'bg-white text-emerald-900 shadow-sm'
                 : 'text-stone-600 hover:bg-stone-100 hover:text-stone-800'
             }`}
-            onClick={() => setActiveTab('scores')}
+            onClick={() => switchTab('scores')}
           >
             Scores
           </button>
@@ -76,7 +86,7 @@ function App() {
                 ? 'bg-white text-sky-900 shadow-sm'
                 : 'text-stone-600 hover:bg-stone-100 hover:text-stone-800'
             }`}
-            onClick={() => setActiveTab('rules')}
+            onClick={() => switchTab('rules')}
           >
             Rules
           </button>

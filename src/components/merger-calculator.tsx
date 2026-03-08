@@ -39,8 +39,8 @@ export function MergerCalculator() {
   }
 
   return (
-    <article className="space-y-4 rounded-xl border border-[#1e3354] bg-[#132038] p-4 shadow-sm sm:space-y-5 sm:p-5">
-      <h2 className="text-xl font-bold text-amber-300 sm:text-2xl">Merger Calculator</h2>
+    <article className="space-y-4 rounded-xl border border-stone-200 bg-white p-4 shadow-sm sm:space-y-5 sm:p-5">
+      <h2 className="text-xl font-bold text-amber-900 sm:text-2xl">Merger Calculator</h2>
 
       <CompanyTypeSelector value={companyType} onChange={handleCompanyTypeChange} />
 

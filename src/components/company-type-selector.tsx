@@ -19,14 +19,14 @@ const DISPLAY_NAMES: Record<CompanyType, string> = {
 export function CompanyTypeSelector({ value, onChange }: CompanyTypeSelectorProps) {
   return (
     <div className="space-y-4">
-      <label htmlFor="company-type" className="block text-sm font-semibold text-amber-300">
+      <label htmlFor="company-type" className="block text-sm font-semibold text-amber-900">
         Company Type
       </label>
       <select
         id="company-type"
         value={value}
         onChange={(e) => onChange(e.target.value as CompanyType)}
-        className="min-h-[44px] w-full rounded-lg border border-amber-800 bg-[#132038] px-3 py-2.5 text-sm text-amber-300 shadow-sm transition-colors focus:border-amber-500 focus:ring-2 focus:ring-amber-500 focus:outline-none sm:text-base"
+        className="min-h-[44px] w-full rounded-lg border border-amber-300 bg-amber-50 px-3 py-2.5 text-sm text-amber-900 shadow-sm transition-colors focus:border-amber-500 focus:ring-2 focus:ring-amber-500 focus:outline-none sm:text-base"
       >
         {MERGER_COMPANY_TYPES.map((type) => (
           <option key={type} value={type}>
@@ -38,7 +38,7 @@ export function CompanyTypeSelector({ value, onChange }: CompanyTypeSelectorProp
         Base price per unit: <strong>Rp {BASE_PRICES[value]}</strong>
       </p>
       {(value === 'SiapFajiCreation' || value === 'SiapFajiMerger') && (
-        <p className="text-xs text-slate-500">Creation = merging Rice + Spice. Merger = merging two Siap Faji.</p>
+        <p className="text-xs text-stone-500">Creation = merging Rice + Spice. Merger = merging two Siap Faji.</p>
       )}
     </div>
   )

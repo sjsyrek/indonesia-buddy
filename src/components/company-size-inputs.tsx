@@ -52,12 +52,12 @@ export function CompanySizeInputs({
 
   return (
     <fieldset className="space-y-4">
-      <legend className="text-sm font-semibold text-amber-300">Company Sizes</legend>
+      <legend className="text-sm font-semibold text-amber-900">Company Sizes</legend>
 
       <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 sm:gap-5">
-        <div className="space-y-2 rounded-xl border border-[#1e3354] bg-[#132038] p-4 shadow-sm sm:p-5">
+        <div className="space-y-2 rounded-xl border border-stone-200 bg-white p-4 shadow-sm sm:p-5">
           <div>
-            <label htmlFor="owner-a-name" className="block text-xs font-medium text-amber-300 sm:text-sm">
+            <label htmlFor="owner-a-name" className="block text-xs font-medium text-amber-800 sm:text-sm">
               Owner A Name
             </label>
             <input
@@ -66,11 +66,11 @@ export function CompanySizeInputs({
               value={ownerAName}
               onChange={(e) => onOwnerANameChange(e.target.value)}
               placeholder="Owner A"
-              className="mt-1 min-h-[44px] w-full rounded-md border border-amber-800 bg-[#132038] px-3 py-2 text-sm text-amber-300 placeholder-amber-700 transition-colors focus:border-amber-500 focus:ring-2 focus:ring-amber-500 focus:outline-none"
+              className="mt-1 min-h-[44px] w-full rounded-md border border-amber-300 bg-white px-3 py-2 text-sm text-amber-900 placeholder-amber-400 transition-colors focus:border-amber-500 focus:ring-2 focus:ring-amber-500 focus:outline-none"
             />
           </div>
           <div>
-            <label htmlFor="owner-a-units" className="block text-xs font-medium text-amber-300 sm:text-sm">
+            <label htmlFor="owner-a-units" className="block text-xs font-medium text-amber-800 sm:text-sm">
               Company A Units
             </label>
             <input
@@ -82,14 +82,14 @@ export function CompanySizeInputs({
               value={unitADisplay}
               onChange={(e) => handleUnitAChange(e.target.value)}
               onBlur={handleUnitABlur}
-              className="mt-1 min-h-[44px] w-full rounded-md border border-amber-800 bg-[#132038] px-3 py-2 text-sm text-amber-300 transition-colors focus:border-amber-500 focus:ring-2 focus:ring-amber-500 focus:outline-none"
+              className="mt-1 min-h-[44px] w-full rounded-md border border-amber-300 bg-white px-3 py-2 text-sm text-amber-900 transition-colors focus:border-amber-500 focus:ring-2 focus:ring-amber-500 focus:outline-none"
             />
           </div>
         </div>
 
-        <div className="space-y-2 rounded-xl border border-[#1e3354] bg-[#132038] p-4 shadow-sm sm:p-5">
+        <div className="space-y-2 rounded-xl border border-stone-200 bg-white p-4 shadow-sm sm:p-5">
           <div>
-            <label htmlFor="owner-b-name" className="block text-xs font-medium text-amber-300 sm:text-sm">
+            <label htmlFor="owner-b-name" className="block text-xs font-medium text-amber-800 sm:text-sm">
               Owner B Name
             </label>
             <input
@@ -98,11 +98,11 @@ export function CompanySizeInputs({
               value={ownerBName}
               onChange={(e) => onOwnerBNameChange(e.target.value)}
               placeholder="Owner B"
-              className="mt-1 min-h-[44px] w-full rounded-md border border-amber-800 bg-[#132038] px-3 py-2 text-sm text-amber-300 placeholder-amber-700 transition-colors focus:border-amber-500 focus:ring-2 focus:ring-amber-500 focus:outline-none"
+              className="mt-1 min-h-[44px] w-full rounded-md border border-amber-300 bg-white px-3 py-2 text-sm text-amber-900 placeholder-amber-400 transition-colors focus:border-amber-500 focus:ring-2 focus:ring-amber-500 focus:outline-none"
             />
           </div>
           <div>
-            <label htmlFor="owner-b-units" className="block text-xs font-medium text-amber-300 sm:text-sm">
+            <label htmlFor="owner-b-units" className="block text-xs font-medium text-amber-800 sm:text-sm">
               Company B Units
             </label>
             <input
@@ -114,13 +114,13 @@ export function CompanySizeInputs({
               value={unitBDisplay}
               onChange={(e) => handleUnitBChange(e.target.value)}
               onBlur={handleUnitBBlur}
-              className="mt-1 min-h-[44px] w-full rounded-md border border-amber-800 bg-[#132038] px-3 py-2 text-sm text-amber-300 transition-colors focus:border-amber-500 focus:ring-2 focus:ring-amber-500 focus:outline-none"
+              className="mt-1 min-h-[44px] w-full rounded-md border border-amber-300 bg-white px-3 py-2 text-sm text-amber-900 transition-colors focus:border-amber-500 focus:ring-2 focus:ring-amber-500 focus:outline-none"
             />
           </div>
         </div>
       </div>
 
-      <p className="text-center text-sm font-semibold text-amber-300" aria-live="polite">
+      <p className="text-center text-sm font-semibold text-amber-800" aria-live="polite">
         {totalUnits} total units
       </p>
     </fieldset>

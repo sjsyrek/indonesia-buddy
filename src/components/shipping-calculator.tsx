@@ -16,9 +16,9 @@ export function ShippingCalculator() {
   return (
     <article
       aria-label="Shipping calculator"
-      className="space-y-4 rounded-xl border border-[#1e3354] bg-[#132038] p-4 shadow-sm sm:space-y-5 sm:p-5"
+      className="space-y-4 rounded-xl border border-stone-200 bg-white p-4 shadow-sm sm:space-y-5 sm:p-5"
     >
-      <h2 className="text-xl font-bold text-teal-300 sm:text-2xl">
+      <h2 className="text-xl font-bold text-teal-900 sm:text-2xl">
         Shipping Calculator
       </h2>
 

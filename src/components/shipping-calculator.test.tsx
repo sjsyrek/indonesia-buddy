@@ -98,7 +98,7 @@ describe('ShippingCalculator', () => {
       render(<ShippingCalculator />)
       // Default: Rice, quantity 1, hops 0 => profit of 20
       const netProfit = screen.getByTestId('net-profit')
-      expect(netProfit.className).toMatch(/emerald/)
+      expect(netProfit.className).toMatch(/green/)
     })
 
     it('shows red color for loss', async () => {

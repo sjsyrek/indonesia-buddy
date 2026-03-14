@@ -2,9 +2,9 @@ import { useState, useMemo } from 'react'
 
 interface PlayerData {
   name: string
-  bankMoney: number
-  cashMoney: number
-  isDoubleCash: boolean
+  bank: number
+  cash: number
+  earnings: number
 }
 
 type Phase = 'setup' | 'scoring'
@@ -16,9 +16,8 @@ function getOrdinal(n: number): string {
   return `${n}th`
 }
 
-function calculateTotal(player: PlayerData): number {
-  const cashAmount = player.isDoubleCash ? player.cashMoney * 2 : player.cashMoney
-  return player.bankMoney + cashAmount
+function calculateTotal(player: PlayerData, isFinalRound: boolean): number {
+  return player.bank + player.cash + (isFinalRound ? player.earnings * 2 : player.earnings)
 }
 
 export function ScoreTracker() {
@@ -26,6 +25,7 @@ export function ScoreTracker() {
   const [playerCount, setPlayerCount] = useState<number | null>(null)
   const [playerNames, setPlayerNames] = useState<string[]>([])
   const [players, setPlayers] = useState<PlayerData[]>([])
+  const [isFinalRound, setIsFinalRound] = useState(false)
 
   const isSetup = phase === 'setup'
 
@@ -46,9 +46,9 @@ export function ScoreTracker() {
     if (playerCount === null) return
     const initialPlayers: PlayerData[] = Array.from({ length: playerCount }, (_, i) => ({
       name: playerNames[i]?.trim() || `Player ${i + 1}`,
-      bankMoney: 0,
-      cashMoney: 0,
-      isDoubleCash: false,
+      bank: 0,
+      cash: 0,
+      earnings: 0,
     }))
     setPlayers(initialPlayers)
     setPhase('scoring')
@@ -69,8 +69,8 @@ export function ScoreTracker() {
   const rankedPlayers = useMemo(() => {
     return players
       .map((player, index) => ({ ...player, originalIndex: index }))
-      .sort((a, b) => calculateTotal(b) - calculateTotal(a))
-  }, [players])
+      .sort((a, b) => calculateTotal(b, isFinalRound) - calculateTotal(a, isFinalRound))
+  }, [players, isFinalRound])
 
   if (isSetup) {
     return (
@@ -162,9 +162,22 @@ export function ScoreTracker() {
         <span className="font-bold text-emerald-700">2. Scoring</span>
       </div>
 
+      <div className="flex items-center gap-3 rounded-xl border border-emerald-200 bg-white p-4 shadow-sm">
+        <input
+          type="checkbox"
+          id="final-round"
+          checked={isFinalRound}
+          onChange={(e) => setIsFinalRound(e.target.checked)}
+          className="h-4 w-4 rounded border-emerald-300 text-emerald-600 focus:ring-emerald-500"
+        />
+        <label htmlFor="final-round" className="text-sm font-medium text-emerald-700">
+          Final round — earnings doubled
+        </label>
+      </div>
+
       <div className="space-y-6">
         {players.map((player, index) => {
-          const total = calculateTotal(player)
+          const total = calculateTotal(player, isFinalRound)
           return (
             <section
               key={index}
@@ -173,7 +186,7 @@ export function ScoreTracker() {
             >
               <h3 className="mb-3 text-lg font-bold text-emerald-800">{player.name}</h3>
 
-              <div className="grid grid-cols-2 gap-3">
+              <div className="grid grid-cols-3 gap-3">
                 <div>
                   <label
                     htmlFor={`${player.name.toLowerCase()}-bank`}
@@ -186,10 +199,8 @@ export function ScoreTracker() {
                     type="number"
                     min={0}
                     inputMode="numeric"
-                    value={player.bankMoney || ''}
-                    onChange={(e) =>
-                      updatePlayer(index, { bankMoney: Number(e.target.value) || 0 })
-                    }
+                    value={player.bank || ''}
+                    onChange={(e) => updatePlayer(index, { bank: Number(e.target.value) || 0 })}
                     placeholder="0"
                     className="w-full rounded-lg border border-emerald-300 px-3 py-2 text-lg font-semibold text-emerald-900 placeholder:text-emerald-300 focus:border-emerald-500 focus:outline-none focus:ring-2 focus:ring-emerald-500"
                   />
@@ -206,43 +217,43 @@ export function ScoreTracker() {
                     type="number"
                     min={0}
                     inputMode="numeric"
-                    value={player.cashMoney || ''}
-                    onChange={(e) =>
-                      updatePlayer(index, { cashMoney: Number(e.target.value) || 0 })
-                    }
+                    value={player.cash || ''}
+                    onChange={(e) => updatePlayer(index, { cash: Number(e.target.value) || 0 })}
+                    placeholder="0"
+                    className="w-full rounded-lg border border-emerald-300 px-3 py-2 text-lg font-semibold text-emerald-900 placeholder:text-emerald-300 focus:border-emerald-500 focus:outline-none focus:ring-2 focus:ring-emerald-500"
+                  />
+                </div>
+                <div>
+                  <label
+                    htmlFor={`${player.name.toLowerCase()}-earnings`}
+                    className="mb-1 block text-sm font-medium text-emerald-700"
+                  >
+                    {player.name} Earnings
+                    {isFinalRound && (
+                      <span aria-hidden="true" className="ml-1 text-amber-600">
+                        ×2
+                      </span>
+                    )}
+                  </label>
+                  <input
+                    id={`${player.name.toLowerCase()}-earnings`}
+                    type="number"
+                    min={0}
+                    inputMode="numeric"
+                    value={player.earnings || ''}
+                    onChange={(e) => updatePlayer(index, { earnings: Number(e.target.value) || 0 })}
                     placeholder="0"
                     className="w-full rounded-lg border border-emerald-300 px-3 py-2 text-lg font-semibold text-emerald-900 placeholder:text-emerald-300 focus:border-emerald-500 focus:outline-none focus:ring-2 focus:ring-emerald-500"
                   />
                 </div>
               </div>
 
-              <div className="mt-3 flex items-center gap-3">
-                <input
-                  type="checkbox"
-                  id={`${player.name.toLowerCase()}-double`}
-                  checked={player.isDoubleCash}
-                  onChange={(e) =>
-                    updatePlayer(index, { isDoubleCash: e.target.checked })
-                  }
-                  className="h-4 w-4 rounded border-emerald-300 text-emerald-600 focus:ring-emerald-500"
-                  aria-label={`Double cash for ${player.name}`}
-                />
-                <label
-                  htmlFor={`${player.name.toLowerCase()}-double`}
-                  className="text-sm font-medium text-emerald-700"
-                >
-                  Last round cash doubled?
-                </label>
-              </div>
-
               <div className="mt-3 rounded-lg bg-emerald-50 p-3 text-center">
                 <span className="text-sm text-emerald-600">Total</span>
                 <p className="text-2xl font-bold text-emerald-900">
                   Rp {total}
-                  {player.isDoubleCash && (
-                    <span className="ml-2 text-sm font-normal text-amber-600">
-                      (Cash ×2)
-                    </span>
+                  {isFinalRound && player.earnings > 0 && (
+                    <span className="ml-2 text-sm font-normal text-amber-600">(Earnings ×2)</span>
                   )}
                 </p>
               </div>
@@ -251,12 +262,12 @@ export function ScoreTracker() {
         })}
       </div>
 
-      {players.some((p) => p.bankMoney > 0 || p.cashMoney > 0) && (
+      {players.some((p) => p.bank > 0 || p.cash > 0 || p.earnings > 0) && (
         <section aria-label="Rankings" role="region" className="space-y-3">
           <h3 className="text-lg font-bold text-emerald-800">Rankings</h3>
           <ol className="space-y-2" aria-live="polite">
             {rankedPlayers.map((player, rank) => {
-              const total = calculateTotal(player)
+              const total = calculateTotal(player, isFinalRound)
               const isWinner = rank === 0
               return (
                 <li
@@ -287,8 +298,8 @@ export function ScoreTracker() {
                       Rp {total}
                     </p>
                     <p className="text-xs text-emerald-600">
-                      Bank {player.bankMoney} + Cash {player.cashMoney}
-                      {player.isDoubleCash && ' ×2'}
+                      Bank {player.bank} + Cash {player.cash} + Earnings {player.earnings}
+                      {isFinalRound && player.earnings > 0 ? ' ×2' : ''}
                     </p>
                   </div>
                 </li>

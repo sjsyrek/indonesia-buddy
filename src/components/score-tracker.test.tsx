@@ -68,7 +68,6 @@ describe('ScoreTracker', () => {
 
       await user.click(screen.getByRole('button', { name: /start scoring/i }))
 
-      // Should show bank and cash inputs
       expect(screen.getByLabelText(/alice.*bank/i)).toBeInTheDocument()
       expect(screen.getByLabelText(/bob.*bank/i)).toBeInTheDocument()
     })
@@ -85,7 +84,6 @@ describe('ScoreTracker', () => {
 
       await user.click(screen.getByRole('button', { name: /edit players/i }))
 
-      // Should be back in setup phase
       expect(screen.getAllByLabelText(/player \d+ name/i)).toHaveLength(2)
     })
 
@@ -96,13 +94,12 @@ describe('ScoreTracker', () => {
       await user.click(screen.getByRole('button', { name: /2 players/i }))
       await user.click(screen.getByRole('button', { name: /start scoring/i }))
 
-      // Should show default names like "Player 1", "Player 2"
       expect(screen.getByLabelText(/player 1.*bank/i)).toBeInTheDocument()
       expect(screen.getByLabelText(/player 2.*bank/i)).toBeInTheDocument()
     })
   })
 
-  describe('bank and cash tracking', () => {
+  describe('score inputs', () => {
     async function setupScoringPhase() {
       const user = userEvent.setup()
       render(<ScoreTracker />)
@@ -116,43 +113,38 @@ describe('ScoreTracker', () => {
       return user
     }
 
-    it('shows bank and cash inputs for each player', async () => {
+    it('shows bank, cash, and earnings inputs for each player', async () => {
       await setupScoringPhase()
 
       expect(screen.getByLabelText(/alice.*bank/i)).toBeInTheDocument()
       expect(screen.getByLabelText(/alice.*cash/i)).toBeInTheDocument()
+      expect(screen.getByLabelText(/alice.*earnings/i)).toBeInTheDocument()
       expect(screen.getByLabelText(/bob.*bank/i)).toBeInTheDocument()
       expect(screen.getByLabelText(/bob.*cash/i)).toBeInTheDocument()
+      expect(screen.getByLabelText(/bob.*earnings/i)).toBeInTheDocument()
     })
 
-    it('updates totals when bank and cash values change', async () => {
+    it('updates total when bank, cash, and earnings values change', async () => {
       const user = await setupScoringPhase()
 
-      const aliceBank = screen.getByLabelText(/alice.*bank/i)
-      const aliceCash = screen.getByLabelText(/alice.*cash/i)
+      await user.type(screen.getByLabelText(/alice.*bank/i), '100')
+      await user.type(screen.getByLabelText(/alice.*cash/i), '50')
+      await user.type(screen.getByLabelText(/alice.*earnings/i), '30')
 
-      await user.type(aliceBank, '100')
-      await user.type(aliceCash, '50')
-
-      // Should display total of 150 for Alice (in scoring card and/or rankings)
+      // 100 + 50 + 30 = 180
       const aliceSection = screen.getByRole('region', { name: /alice scoring/i })
-      expect(within(aliceSection).getByText(/150/)).toBeInTheDocument()
+      expect(within(aliceSection).getByText(/180/)).toBeInTheDocument()
     })
 
     it('shows running total for each player', async () => {
       const user = await setupScoringPhase()
 
-      const aliceBank = screen.getByLabelText(/alice.*bank/i)
-      const aliceCash = screen.getByLabelText(/alice.*cash/i)
-      const bobBank = screen.getByLabelText(/bob.*bank/i)
-      const bobCash = screen.getByLabelText(/bob.*cash/i)
+      await user.type(screen.getByLabelText(/alice.*bank/i), '200')
+      await user.type(screen.getByLabelText(/alice.*cash/i), '100')
+      await user.type(screen.getByLabelText(/bob.*bank/i), '150')
+      await user.type(screen.getByLabelText(/bob.*cash/i), '75')
 
-      await user.type(aliceBank, '200')
-      await user.type(aliceCash, '100')
-      await user.type(bobBank, '150')
-      await user.type(bobCash, '75')
-
-      // Alice total: 300, Bob total: 225
+      // Alice: 300, Bob: 225
       const aliceSection = screen.getByRole('region', { name: /alice scoring/i })
       const bobSection = screen.getByRole('region', { name: /bob scoring/i })
       expect(within(aliceSection).getByText(/300/)).toBeInTheDocument()
@@ -173,41 +165,50 @@ describe('ScoreTracker', () => {
 
       await user.type(screen.getByLabelText(/alice.*bank/i), '100')
       await user.type(screen.getByLabelText(/alice.*cash/i), '50')
+      await user.type(screen.getByLabelText(/alice.*earnings/i), '60')
       await user.type(screen.getByLabelText(/bob.*bank/i), '80')
-      await user.type(screen.getByLabelText(/bob.*cash/i), '60')
+      await user.type(screen.getByLabelText(/bob.*cash/i), '40')
+      await user.type(screen.getByLabelText(/bob.*earnings/i), '30')
 
       return user
     }
 
-    it('shows doubling toggle for each player', async () => {
+    it('shows a single global final round toggle', async () => {
       await setupWithScores()
 
-      const toggles = screen.getAllByRole('checkbox', { name: /double cash for/i })
-      expect(toggles).toHaveLength(2)
+      expect(screen.getByRole('checkbox', { name: /final round/i })).toBeInTheDocument()
     })
 
-    it('doubles cash amount when toggle is enabled', async () => {
+    it('doubles earnings for all players when final round is enabled', async () => {
       const user = await setupWithScores()
 
-      // Alice: bank 100, cash 50 = 150
-      // Enable doubling for Alice: bank 100 + cash 50*2 = 200
-      const aliceToggle = screen.getAllByRole('checkbox', { name: /double cash for/i })[0]
-      await user.click(aliceToggle)
-
-      // Alice total should now be 200 (in her scoring card)
+      // Alice before: 100 + 50 + 60 = 210
+      // Alice after:  100 + 50 + 120 = 270
       const aliceSection = screen.getByRole('region', { name: /alice scoring/i })
-      expect(within(aliceSection).getByText(/200/)).toBeInTheDocument()
+      expect(within(aliceSection).getByText(/210/)).toBeInTheDocument()
+
+      await user.click(screen.getByRole('checkbox', { name: /final round/i }))
+
+      expect(within(aliceSection).getByText(/270/)).toBeInTheDocument()
     })
 
-    it('shows adjusted total clearly when doubled', async () => {
+    it('shows ×2 indicator when final round is enabled and player has earnings', async () => {
       const user = await setupWithScores()
 
-      const aliceToggle = screen.getAllByRole('checkbox', { name: /double cash for/i })[0]
-      await user.click(aliceToggle)
+      await user.click(screen.getByRole('checkbox', { name: /final round/i }))
 
-      // Should show the doubling indicator in Alice's scoring card
       const aliceSection = screen.getByRole('region', { name: /alice scoring/i })
-      expect(within(aliceSection).getByText(/×2/)).toBeInTheDocument()
+      expect(within(aliceSection).getAllByText(/×2/).length).toBeGreaterThan(0)
+    })
+
+    it('does not double bank or cash, only earnings', async () => {
+      const user = await setupWithScores()
+
+      await user.click(screen.getByRole('checkbox', { name: /final round/i }))
+
+      // Bob: bank 80, cash 40, earnings 30 doubled = 80 + 40 + 60 = 180 (not 300)
+      const bobSection = screen.getByRole('region', { name: /bob scoring/i })
+      expect(within(bobSection).getByText(/180/)).toBeInTheDocument()
     })
   })
 
@@ -244,7 +245,7 @@ describe('ScoreTracker', () => {
       const rankings = screen.getByRole('region', { name: /rankings/i })
       const items = within(rankings).getAllByRole('listitem')
 
-      // Bob (300) should be first, Alice (150) second, Carol (120) third
+      // Bob (300) first, Alice (150) second, Carol (120) third
       expect(items[0]).toHaveTextContent(/bob/i)
       expect(items[1]).toHaveTextContent(/alice/i)
       expect(items[2]).toHaveTextContent(/carol/i)
@@ -265,7 +266,6 @@ describe('ScoreTracker', () => {
       const rankings = screen.getByRole('region', { name: /rankings/i })
       const items = within(rankings).getAllByRole('listitem')
 
-      // First item (winner) should have a distinguishing attribute
       expect(items[0]).toHaveAttribute('data-winner', 'true')
     })
 
@@ -273,16 +273,14 @@ describe('ScoreTracker', () => {
       await setupWithDifferentScores()
 
       const rankings = screen.getByRole('region', { name: /rankings/i })
-      // Bob: Bank 200 + Cash 100 = 300
       expect(within(rankings).getByText(/300/)).toBeInTheDocument()
     })
 
-    it('shows doubled indicator in ranking when cash is doubled', async () => {
+    it('shows ×2 indicator in ranking when final round is enabled and player has earnings', async () => {
       const user = await setupWithDifferentScores()
 
-      // Enable doubling for Carol: bank 80 + cash 40*2 = 160
-      const carolToggle = screen.getAllByRole('checkbox', { name: /double cash for/i })[2]
-      await user.click(carolToggle)
+      await user.type(screen.getByLabelText(/carol.*earnings/i), '40')
+      await user.click(screen.getByRole('checkbox', { name: /final round/i }))
 
       const rankings = screen.getByRole('region', { name: /rankings/i })
       expect(within(rankings).getByText(/×2/)).toBeInTheDocument()

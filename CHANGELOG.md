@@ -7,6 +7,12 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Changed
+
+- Score Tracker redesigned with three money inputs per player: Bank, Cash, and Earnings
+- Final-round doubling replaced per-player checkboxes with a single global "Final round" toggle
+- Earnings are the only value doubled in the final round; Bank and Cash are unaffected
+
 ## [1.0.0] - 2026-03-08
 
 ### Added

@@ -171,7 +171,7 @@ export function ScoreTracker() {
           className="h-4 w-4 rounded border-emerald-300 text-emerald-600 focus:ring-emerald-500"
         />
         <label htmlFor="final-round" className="text-sm font-medium text-emerald-700">
-          Final round — earnings doubled
+          Final round (earnings doubled)
         </label>
       </div>
 
